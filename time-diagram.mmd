@@ -1,19 +1,15 @@
-%% Presentation
-
-```mermaid
 ---
 config:
+  theme: 'base'
   gitGraph:
     mainBranchName: "time"
+    mainBranchOrder: 4
     parallelCommits: false
 ---
 gitGraph TB: %%LR:
+    branch "work" order:1
     checkout "time"
-    commit id:"long time ago" type:HIGHLIGHT
-
-    branch "personal life"
-    checkout "personal life"
-    commit id:"👶 start" type:HIGHLIGHT
+    commit id:"long time ago"
 
     %% ------------------------------- 2016
     checkout "time"
@@ -21,57 +17,42 @@ gitGraph TB: %%LR:
     %% ------------------------------------
 
     checkout "time"
-    branch "work" order:5
     checkout "work"
     commit id:"adtech startup" type:HIGHLIGHT
 
     %% ------------- Start pet project
     checkout "time"
-    branch "pet project"  order:2
+    branch "pet project"  order:3
     checkout "pet project"
     commit id:"🤙 idea"
     commit id:"Play framework" type:HIGHLIGHT
     %% ------------------------------------
 
-    branch "misc 1" order:3
-    checkout "misc 1"
+    branch "misc" order:2
+    checkout "misc"
     commit id:"scala"
     
-    branch "misc 2" order:4
-
-    %% --------------------------- Scala.io
-    checkout "misc 2"
-    commit id:"Scala.io conference 2016"
-    %% ------------------------------------
-    
-    %% ------------------------------- Spark
     checkout "work"
-    merge "misc 1" id:"Spark"
-    %% -------------------------------------
+    merge "misc" id:"Spark"
 
     %% ------------------------------- 2017
     checkout "time"
     commit id:"2017"
     %% ------------------------------------
     
-    checkout "misc 1"
+    checkout "misc"
     commit id:".grib files"
-
-    %% --------------------------- Scala.io
-    checkout "misc 2"
-    commit id:"Scala.io conference  2017"
-    %% ------------------------------------
     
     checkout "work"
     commit id:"MongoDb"
     
     checkout "pet project"
-    merge "work" id:"MeteorJS"
+    merge "work" id:"MeteorJS" type:HIGHLIGHT
     
-    merge "misc 1" id:"Ionic"
+    merge "misc" id:"Ionic"
     
     %% ------------------------------- Baby
-    checkout "personal life"
+    checkout "time"
     commit id:"👶 baby" type:HIGHLIGHT
     %% ------------------------------------
 
@@ -81,13 +62,17 @@ gitGraph TB: %%LR:
     %% ------------------------------------
 
     %% --------------------------- Scala.io
-    checkout "misc 2"
-    commit id:"Scala.io conference  2018"
+    checkout "work"
+    merge "misc" id:"Scala.io conference"
     %% ------------------------------------
     
     %% ---------------------------- Start Criteo
     checkout "work"
-    merge "misc 2" id:"Criteo" type:HIGHLIGHT
+    commit id:"Criteo" type:HIGHLIGHT
+    checkout "time"
+    merge "work" id:"👔 new job" type:HIGHLIGHT
+
+    commit id:"🏡 rent a house" type:HIGHLIGHT
     
     %% ------------------------------- 2019
     checkout "time"
@@ -112,14 +97,20 @@ gitGraph TB: %%LR:
     checkout "work"
     merge "pet project" id:"Geoloc audiences"
 
-    %% ------------------------------- 2021
+    checkout "pet project"
+    commit id:"notifications"
+
+    checkout "work"
+    merge "pet project" id:"CGrowth alerts"
+
+%% ------------------------------- 2021
     checkout "time"
     commit id:"2021"
     %% ------------------------------------
 
     checkout "pet project"
     commit id:"github actions"
-    
+
     checkout "work"
     merge "pet project" id:"OneKey"
 
@@ -129,37 +120,57 @@ gitGraph TB: %%LR:
     commit id:"strong typing"
 
 
-    checkout "misc 1"
+    checkout "misc"
     merge "pet project" id:"schema-to-types"
 
     checkout "work"
-    merge "misc 1" id:"JSON schemas"
+    merge "misc" id:"JSON schemas"
     
     checkout "pet project"
-    merge "misc 1"
+    merge "misc"
 
     %% ------------------------------- 2022
     checkout "time"
     commit id:"2022"
     %% ------------------------------------
+    
+    checkout "misc"
+    merge "pet project" id:"consulting"
+
+    checkout "pet project"
+    merge "misc"
 
     %% ------------------------------- 2023
     checkout "time"
     commit id:"2023"
     %% ------------------------------------
+    
+    checkout "pet project"
+    commit id:"open data"
+    commit id:"web crawler"
+    
+    checkout "misc"
+    merge "pet project" id:"waterspot-catalog"
+    checkout "pet project"
+    merge "misc"
 
     %% ---------------------- Place to live
-    checkout "misc 1"
-    merge "pet project" id:"place-to-live"
+    checkout "misc"
+    merge "pet project" id:"a-place-to-live"
     checkout "pet project"
-    merge "misc 1"
+    merge "misc"
     %% ------------------------------------
 
-    checkout "personal life"
-    merge "misc 1" id:"🏡 new house" type:HIGHLIGHT
+    checkout "time"
+    merge "misc" id:"🏡 buy a house" type:HIGHLIGHT
 
     checkout "pet project"
     commit id:"ImageKit"
+
+    %% ------------------------------- 2024
+    checkout "time"
+    commit id:"2024"
+    %% ------------------------------------
 
     checkout "pet project"
     commit id:"open graph"
@@ -167,20 +178,10 @@ gitGraph TB: %%LR:
     checkout "pet project"
     commit id:"server side rendering"
 
-    %% ------------------------------- 2024
-    checkout "time"
-    commit id:"2024"
-    %% ------------------------------------
-
     %% ------------------------------- 2025
     checkout "time"
     commit id:"2025"
     %% ------------------------------------
-    
-    checkout "personal life"
-    commit id:" "
 
     checkout "work"
     commit id:"🎤 futurise"
-    
-```
