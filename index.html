@@ -138,13 +138,25 @@
                     reveal = myWindow.Reveal;
 
                     setState(false);
+
+                    // TODO when entering a particular slide, if it has an id, try to move the sozi player to that frame
+                    reveal.addEventListener('slidechanged', (e) => {
+                        const section = e.currentSlide;
+                        const id = section.id;
+                        if (id) {
+                            timeline.contentWindow.sozi.playerController.moveToFrame(id);
+                        }
+                    });
                 };
 
                 // Configure the sync between timeline and slides
                 timeline.onload = (e) => {
                     const contentWindow = e.target.contentWindow;
 
+                    // When the timeline presentation moves to a particular frame, try to sync the slides
                     contentWindow.sozi.playerController.addListener("moveToFrame", (f) => {
+                        if (f == null)
+                            return;
                         const slideId = f.frameId;
                         // Only if we can identify the corresponding slide
                         const section = slides.contentDocument.getElementById(slideId);
