@@ -24,7 +24,7 @@
   "exportToVideoBitRate": 2000000,
   "frames": [
     {
-      "frameId": "start",
+      "frameId": "test 1",
       "title": "first frame",
       "titleLevel": 0,
       "notes": "",
@@ -61,7 +61,7 @@
       "cameraOffsets": {}
     },
     {
-      "frameId": "toto",
+      "frameId": "test 2",
       "title": "second frame",
       "titleLevel": 0,
       "notes": "",
@@ -138,7 +138,7 @@
   "elementsToHide": [],
   "customFiles": [],
   "selectedFrames": [
-    "start"
+    "toto2"
   ],
   "selectedLayers": [
     "__sozi_auto__"

@@ -36,22 +36,22 @@
             </style>
         </head>
         <body>
-            <iframe id="slides" src="slides/index%20copy.html"></iframe>
+            <iframe id="slides" src="slides/index.html"></iframe>
             <iframe id="timeline" src="timeline-presentation/timeline.sozi.html"></iframe>
             <div class="small" id="small-overlay"></div>
 
             <script>
+                const slides = document.getElementById('slides');
+                const timeline = document.getElementById('timeline');
+
                 /**
                  * Set the state of the slides and timeline iframes.
                  * @param {boolean} isSlidesFullscreen - If true, set the slides iframe to fullscreen; otherwise, set it to small.
                  * @returns {HTMLElement} - Returns the slides iframe.
                  */
                 function setState(isSlidesFullscreen) {
-                    const slides = document.getElementById('slides');
-                    const timeline = document.getElementById('timeline');
                     setIframeSize(slides, !isSlidesFullscreen);
                     setIframeSize(timeline, isSlidesFullscreen);
-                    return slides;
                 }
 
                 /**
@@ -81,14 +81,25 @@
                         iframe.classList.add('fullscreen');
                         iframe.classList.remove('small');
                         iframe.focus();
+
+                        if (iframe === slides) {
+                            // show controls
+                            iframe.contentDocument.querySelector(".controls").style.display = "block";
+                        }
+
                     } else {
                         iframe.classList.add('small');
                         iframe.classList.remove('fullscreen');
+
+                        if (iframe === slides) {
+                            // hide controls
+                            iframe.contentDocument.querySelector(".controls").style.display = "none";
+                        }
                     }
                 }
 
-                // Init
-                setState(false);
+                // Init -----------------------------------------------------------------------------------
+
 
                 // Make small iframe "clickable" to toggle via transparent layer
                 document.getElementById('small-overlay').addEventListener('click', () => toggleFrames());
@@ -119,6 +130,30 @@
                     });
                 });
                 // -----------------------------------------------------------------
+
+                let reveal = null;
+
+                slides.onload = (e) => {
+                    const myWindow = e.target.contentWindow;
+                    reveal = myWindow.Reveal;
+
+                    setState(false);
+                };
+
+                // Configure the sync between timeline and slides
+                timeline.onload = (e) => {
+                    const contentWindow = e.target.contentWindow;
+
+                    contentWindow.sozi.playerController.addListener("moveToFrame", (f) => {
+                        const slideId = f.frameId;
+                        // Only if we can identify the corresponding slide
+                        const section = slides.contentDocument.getElementById(slideId);
+                        if (section) {
+                            const indices = reveal.getIndices(section);
+                            reveal.slide(indices.h, indices.v);
+                        }
+                    })
+                };
             </script>
         </body>
         </html>
