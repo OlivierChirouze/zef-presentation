@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Slides and Timeline</title>
+            <style>
+                body, html {
+                    margin: 0;
+                    padding: 0;
+                    height: 100%;
+                    overflow: hidden;
+                }
+                iframe {
+                    border: none;
+                    position: absolute;
+                }
+                .fullscreen {
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                }
+                .small {
+                    width: 10%;
+                    height: 10%;
+                    bottom: 0;
+                    left: 0;
+                    z-index: 2;
+                }
+                #small-overlay {
+                    background-color: transparent;
+                    cursor: pointer;
+                    position: absolute;
+                    z-index: 3;
+                }
+            </style>
+        </head>
+        <body>
+            <iframe id="slides" src="slides/index%20copy.html"></iframe>
+            <iframe id="timeline" src="timeline-presentation/timeline.sozi.html"></iframe>
+            <div class="small" id="small-overlay"></div>
+
+            <script>
+                /**
+                 * Set the state of the slides and timeline iframes.
+                 * @param {boolean} isSlidesFullscreen - If true, set the slides iframe to fullscreen; otherwise, set it to small.
+                 * @returns {HTMLElement} - Returns the slides iframe.
+                 */
+                function setState(isSlidesFullscreen) {
+                    const slides = document.getElementById('slides');
+                    const timeline = document.getElementById('timeline');
+                    setIframeSize(slides, !isSlidesFullscreen);
+                    setIframeSize(timeline, isSlidesFullscreen);
+                    return slides;
+                }
+
+                /**
+                 * Toggle the size of the slides and timeline iframes.
+                 */
+                function toggleFrames() {
+                    const isSlidesFullscreen = isIframeFullscreen(slides);
+                    setState(isSlidesFullscreen);
+                }
+
+                /**
+                 * Check if an iframe is in fullscreen mode.
+                 * @param {HTMLElement} iframe - The iframe element to check.
+                 * @returns {boolean} - Returns true if the iframe is in fullscreen mode, otherwise false.
+                 */
+                function isIframeFullscreen(iframe) {
+                    return iframe.classList.contains('fullscreen');
+                }
+
+                /**
+                 * Set the size of an iframe to either small or fullscreen.
+                 * @param {HTMLIFrameElement} iframe - The iframe element to resize.
+                 * @param {boolean} fullscreen - If true, set to fullscreen; otherwise, set to small.
+                 */
+                function setIframeSize(iframe, fullscreen) {
+                    if (fullscreen) {
+                        iframe.classList.add('fullscreen');
+                        iframe.classList.remove('small');
+                        iframe.focus();
+                    } else {
+                        iframe.classList.add('small');
+                        iframe.classList.remove('fullscreen');
+                    }
+                }
+
+                // Init
+                setState(false);
+
+                // Make small iframe "clickable" to toggle via transparent layer
+                document.getElementById('small-overlay').addEventListener('click', () => toggleFrames());
+
+                // Event configuration ---------------------------------------------
+
+                // Event listener for keydown event to toggle frames
+                window.addEventListener('keydown', function(event) {
+                    if (event.key === 't') {
+                        toggleFrames();
+                    }
+                });
+
+                // Event listener for message event to toggle frames
+                window.addEventListener('message', function(event) {
+                    if (event.data === 'toggleFrames') {
+                        toggleFrames();
+                    }
+                });
+
+                // Add event listener to each iframe to listen for keydown event
+                const iframes = document.querySelectorAll('iframe');
+                iframes.forEach(iframe => {
+                    iframe.contentWindow.addEventListener('keydown', function(event) {
+                        if (event.key === 't') {
+                            window.postMessage('toggleFrames', '*');
+                        }
+                    });
+                });
+                // -----------------------------------------------------------------
+            </script>
+        </body>
+        </html>
