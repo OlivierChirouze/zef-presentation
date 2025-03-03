@@ -7,7 +7,7 @@
   "enableMouseTranslation": true,
   "enableMouseZoom": true,
   "enableMouseRotation": true,
-  "enableMouseNavigation": true,
+  "enableMouseNavigation": false,
   "updateURLOnFrameChange": true,
   "exportType": "pdf",
   "exportToPDFPageSize": "A4",
@@ -24,7 +24,7 @@
   "exportToVideoBitRate": 2000000,
   "frames": [
     {
-      "frameId": "test 1",
+      "frameId": "mermaid.js",
       "title": "first frame",
       "titleLevel": 0,
       "notes": "",
@@ -45,10 +45,10 @@
       },
       "cameraStates": {
         "__sozi_auto__": {
-          "cx": 2669.7377864584464,
-          "cy": 126.76427397313809,
-          "width": 384.5077574409778,
-          "height": 240.23105850890533,
+          "cx": 2661.31049990973,
+          "cy": 129.21490689758238,
+          "width": 403.7331453130267,
+          "height": 252.2426114343506,
           "opacity": 1,
           "angle": 0,
           "clipped": false,
@@ -61,7 +61,7 @@
       "cameraOffsets": {}
     },
     {
-      "frameId": "test 2",
+      "frameId": "long time ago",
       "title": "second frame",
       "titleLevel": 0,
       "notes": "",
@@ -119,10 +119,10 @@
       },
       "cameraStates": {
         "__sozi_auto__": {
-          "cx": 561.1044496637999,
-          "cy": 154.1152736658841,
-          "width": 626.3226200498557,
-          "height": 391.311080390215,
+          "cx": 145.08198466723948,
+          "cy": 155.52090938022374,
+          "width": 799.3640121463243,
+          "height": 499.4231171039871,
           "opacity": 1,
           "angle": 0,
           "clipped": false,

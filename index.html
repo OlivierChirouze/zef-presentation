@@ -58,6 +58,7 @@
                  * Toggle the size of the slides and timeline iframes.
                  */
                 function toggleFrames() {
+                    console.debug("toggleFrames");
                     const isSlidesFullscreen = isIframeFullscreen(slides);
                     setState(isSlidesFullscreen);
                 }
@@ -125,6 +126,7 @@
                 iframes.forEach(iframe => {
                     iframe.contentWindow.addEventListener('keydown', function(event) {
                         if (event.key === 't') {
+                            console.debug("keyboard event t");
                             window.postMessage('toggleFrames', '*');
                         }
                     });
@@ -143,27 +145,50 @@
                     reveal.addEventListener('slidechanged', (e) => {
                         const section = e.currentSlide;
                         const id = section.id;
+                        console.debug("reveal event: slidechanged", section);
                         if (id) {
+                            console.debug("sozi.moveToFrame", id);
                             timeline.contentWindow.sozi.playerController.moveToFrame(id);
                         }
                     });
                 };
 
+                function moveToSlide(slideId) {
+                    // Only if we can identify the corresponding slide
+                    const section = slides.contentDocument.getElementById(slideId);
+                    if (section) {
+                        console.debug("move to slide ", slideId);
+                        const indices = reveal.getIndices(section);
+                        reveal.slide(indices.h, indices.v);
+                    }
+                }
+
                 // Configure the sync between timeline and slides
                 timeline.onload = (e) => {
                     const contentWindow = e.target.contentWindow;
+
+                    // Make each commit clickable
+                    const svg = contentWindow.document.querySelector('svg');
+
+                    if (svg) {
+                        const textElements = svg.querySelectorAll('text');
+                        textElements.forEach(textElement => {
+                            textElement.addEventListener('click', () => {
+                                const slideId = textElement.innerHTML;
+                                moveToSlide(slideId);
+                                toggleFrames();
+                                // Also, try to re-align sozy frame
+                                timeline.contentWindow.sozi.playerController.moveToFrame(slideId);
+                            });
+                        });
+                    }
 
                     // When the timeline presentation moves to a particular frame, try to sync the slides
                     contentWindow.sozi.playerController.addListener("moveToFrame", (f) => {
                         if (f == null)
                             return;
-                        const slideId = f.frameId;
-                        // Only if we can identify the corresponding slide
-                        const section = slides.contentDocument.getElementById(slideId);
-                        if (section) {
-                            const indices = reveal.getIndices(section);
-                            reveal.slide(indices.h, indices.v);
-                        }
+                        console.debug("sozi event: moveToFrame", f);
+                        moveToSlide(f.frameId);
                     })
                 };
             </script>
