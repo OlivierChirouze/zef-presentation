@@ -22,7 +22,7 @@ The talk is a slides presentation that can be navigated through via a "timeline"
 - presenter can make one or the other frame reduced
 
 ## TODO
-- svg: set style for each branch
-- add a masking layer in the svg image
-- in svg: make clickable
+- [ ] script modifying svg: make each commit clickable?
+- [ ] mermaid: set style for each branch
+- [ ] inkscape: add a masking layer in the svg image to hide everything except the time branch at the beginning
  
