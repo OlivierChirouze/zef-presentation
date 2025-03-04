@@ -134,6 +134,7 @@
                 // -----------------------------------------------------------------
 
                 let reveal = null;
+                let sozi = null;
 
                 slides.onload = (e) => {
                     const myWindow = e.target.contentWindow;
@@ -147,8 +148,7 @@
                         const id = section.id;
                         console.debug("reveal event: slidechanged", section);
                         if (id) {
-                            console.debug("sozi.moveToFrame", id);
-                            timeline.contentWindow.sozi.playerController.moveToFrame(id);
+                            moveToFrame(id);
                         }
                     });
                 };
@@ -163,9 +163,17 @@
                     }
                 }
 
+                function moveToFrame(slideId) {
+                    // FIXME make sure the frame exists, otherwise ignore
+                    console.debug("sozi.moveToFrame", slideId);
+                    if (sozi.playerController.player.findFrame(slideId) != null)
+                        sozi.playerController.moveToFrame(slideId);
+                }
+
                 // Configure the sync between timeline and slides
                 timeline.onload = (e) => {
                     const contentWindow = e.target.contentWindow;
+                    sozi = contentWindow.sozi;
 
                     // Make each commit clickable
                     const svg = contentWindow.document.querySelector('svg');
@@ -178,13 +186,13 @@
                                 moveToSlide(slideId);
                                 toggleFrames();
                                 // Also, try to re-align sozy frame
-                                timeline.contentWindow.sozi.playerController.moveToFrame(slideId);
+                                moveToFrame(slideId);
                             });
                         });
                     }
 
                     // When the timeline presentation moves to a particular frame, try to sync the slides
-                    contentWindow.sozi.playerController.addListener("moveToFrame", (f) => {
+                    sozi.playerController.addListener("moveToFrame", (f) => {
                         if (f == null)
                             return;
                         console.debug("sozi event: moveToFrame", f);
