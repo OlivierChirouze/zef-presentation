@@ -31,7 +31,8 @@ gitGraph TB: %%LR:
     branch "misc" order:2
     checkout "misc"
     commit id:"scala"
-    
+
+
     checkout "work"
     merge "misc" id:"Spark"
 
@@ -42,14 +43,6 @@ gitGraph TB: %%LR:
     
     checkout "misc"
     commit id:".grib files"
-    
-    checkout "work"
-    commit id:"MongoDb"
-    
-    checkout "pet project"
-    merge "work" id:"MeteorJS" type:HIGHLIGHT
-    
-    merge "misc" id:"Ionic"
     
     %% ------------------------------- Baby
     checkout "time"
@@ -65,6 +58,15 @@ gitGraph TB: %%LR:
     checkout "work"
     merge "misc" id:"Scala.io conference"
     %% ------------------------------------
+
+    checkout "work"
+    commit id:"MongoDb"
+
+    checkout "pet project"
+    merge "misc" id:"Ionic" type:HIGHLIGHT
+
+    checkout "pet project"
+    merge "work" id:"MeteorJS" type:HIGHLIGHT
     
     %% ---------------------------- Start Criteo
     checkout "work"
@@ -192,3 +194,6 @@ gitGraph TB: %%LR:
 
     checkout "work"
     merge "misc" id:"🎤 futurise"
+
+    checkout "time"
+    commit id:" "
