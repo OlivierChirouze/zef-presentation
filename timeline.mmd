@@ -5,6 +5,11 @@ config:
     mainBranchName: "time"
     mainBranchOrder: 4
     parallelCommits: false
+  themeVariables:
+      git0: '#ff9c03' # work
+      git1: '#04c5c2' # misc
+      git2: '#03b3ff' # pet project
+      git3: 'grey'    # time
 ---
 gitGraph TB: %%LR:
     branch "work" order:1
@@ -40,10 +45,10 @@ gitGraph TB: %%LR:
     checkout "time"
     commit id:"2017"
     %% ------------------------------------
-    
+
     checkout "misc"
-    commit id:".grib files"
-    
+    commit id:".grib files" %% remove-start
+
     %% ------------------------------- Baby
     checkout "time"
     commit id:"👶 baby" type:HIGHLIGHT
@@ -67,7 +72,7 @@ gitGraph TB: %%LR:
 
     checkout "pet project"
     merge "work" id:"MeteorJS" type:HIGHLIGHT
-    
+
     %% ---------------------------- Start Criteo
     checkout "work"
     commit id:"Criteo" type:HIGHLIGHT
@@ -75,7 +80,7 @@ gitGraph TB: %%LR:
     merge "work" id:"👔 new job" type:HIGHLIGHT
 
     commit id:"🏡 rent a house" type:HIGHLIGHT
-    
+
     %% ------------------------------- 2019
     checkout "time"
     commit id:"2019"
@@ -92,10 +97,10 @@ gitGraph TB: %%LR:
     checkout "time"
     commit id:"2020"
     %% ------------------------------------
-    
+
     checkout "pet project"
     commit id:"Leaflet"
-    
+
     checkout "work"
     merge "pet project" id:"Geoloc audiences"
 
@@ -123,11 +128,11 @@ gitGraph TB: %%LR:
 
 
     checkout "misc"
-    merge "pet project" id:"schema-to-types"
+    merge "pet project" id:"schema-to-types" %% remove-end %% remove-start
 
     checkout "work"
     merge "misc" id:"JSON schemas"
-    
+
     checkout "pet project"
     merge "misc"
 
@@ -135,9 +140,9 @@ gitGraph TB: %%LR:
     checkout "time"
     commit id:"2022"
     %% ------------------------------------
-    
+
     checkout "misc"
-    merge "pet project" id:"consulting"
+    merge "pet project" id:"consulting" %% remove-end %% remove-start
 
     checkout "pet project"
     merge "misc"
@@ -146,19 +151,19 @@ gitGraph TB: %%LR:
     checkout "time"
     commit id:"2023"
     %% ------------------------------------
-    
+
     checkout "pet project"
     commit id:"open data"
     commit id:"web crawler"
-    
+
     checkout "misc"
-    merge "pet project" id:"waterspot-catalog"
+    merge "pet project" id:"waterspot-catalog" %% remove-end %% remove-start
     checkout "pet project"
     merge "misc"
 
     %% ---------------------- Place to live
     checkout "misc"
-    merge "pet project" id:"a-place-to-live"
+    merge "pet project" id:"a-place-to-live" %% remove-end %% remove-start
     checkout "pet project"
     merge "misc"
     %% ------------------------------------
@@ -186,7 +191,7 @@ gitGraph TB: %%LR:
     %% ------------------------------------
 
     checkout "misc"
-    merge "pet project" id:"talk"
+    merge "pet project" id:"talk" %% remove-end
     commit id:"reveal.js"
     commit id:"emmet"
     commit id:"mermaid.js"
