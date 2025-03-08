@@ -5,25 +5,27 @@ config:
     mainBranchName: "time"
     mainBranchOrder: 4
     parallelCommits: false
+    rotateCommitLabel: false
   themeVariables:
       git0: '#ff9c03' # work
       git1: '#04c5c2' # misc
       git2: '#03b3ff' # pet project
       git3: 'grey'    # time
+      commitLabelFontSize: "8px"
 ---
 gitGraph TB: %%LR:
     branch "work" order:1
     checkout "time"
     commit id:"long time ago"
 
+    checkout "time"
+    checkout "work"
+    commit id:"adtech startup" type:HIGHLIGHT
+
     %% ------------------------------- 2016
     checkout "time"
     commit id:"2016"
     %% ------------------------------------
-
-    checkout "time"
-    checkout "work"
-    commit id:"adtech startup" type:HIGHLIGHT
 
     %% ------------- Start pet project
     checkout "time"
@@ -61,7 +63,7 @@ gitGraph TB: %%LR:
 
     %% --------------------------- Scala.io
     checkout "work"
-    merge "misc" id:"Scala.io conference"
+    merge "misc" id:"Scala.io conf"
     %% ------------------------------------
 
     checkout "work"
@@ -174,13 +176,13 @@ gitGraph TB: %%LR:
     checkout "pet project"
     commit id:"ImageKit"
 
+    checkout "pet project"
+    commit id:"open graph"
+
     %% ------------------------------- 2024
     checkout "time"
     commit id:"2024"
     %% ------------------------------------
-
-    checkout "pet project"
-    commit id:"open graph"
 
     checkout "pet project"
     commit id:"server side rendering"
