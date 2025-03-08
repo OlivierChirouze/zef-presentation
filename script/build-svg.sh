@@ -12,7 +12,7 @@ end_id=""
 while IFS= read -r line; do
   # Check for "%% remove-end" and extract the commit id
   if [[ $line == *"%% remove-end"* ]]; then
-    end_id=$(echo $line | sed -n 's/.*id:"\([^"]*\)".*/\1/p')
+    end_id=$(echo $line | sed -n 's/.*\(id\|tag\):"\([^"]*\)".*/\2/p')
     # Print the pair of commit ids
     echo "($start_id, $end_id)"
     # Remove the lines between the two commit ids
@@ -21,6 +21,6 @@ while IFS= read -r line; do
 
   # Check for "%% remove-start" and extract the commit id
   if [[ $line == *"%% remove-start"* ]]; then
-    start_id=$(echo $line | sed -n 's/.*id:"\([^"]*\)".*/\1/p')
+    start_id=$(echo $line | sed -n 's/.*\(id\|tag\):"\([^"]*\)".*/\2/p')
   fi
 done < timeline.mmd
