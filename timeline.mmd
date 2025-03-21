@@ -176,9 +176,6 @@ gitGraph TB: %%LR:
     checkout "pet project"
     commit id:"ImageKit"
 
-    checkout "pet project"
-    commit id:"open graph"
-
     %% ------------------------------- 2024
     checkout "time"
     commit id:"2024"
@@ -191,6 +188,12 @@ gitGraph TB: %%LR:
     checkout "time"
     commit id:"2025"
     %% ------------------------------------
+
+    checkout "pet project"
+    commit id:"open graph"
+
+    checkout "work"
+    merge "pet project" id:"client metadata"
 
     checkout "misc"
     merge "pet project" id:"talk" %% remove-end
