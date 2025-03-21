@@ -39,7 +39,6 @@ gitGraph TB: %%LR:
     checkout "misc"
     commit id:"scala"
 
-
     checkout "work"
     merge "misc" id:"Spark"
 
@@ -49,12 +48,13 @@ gitGraph TB: %%LR:
     %% ------------------------------------
 
     checkout "misc"
-    commit id:".grib files" %% remove-start
+    commit id:".grib files"
 
-    %% ------------------------------- Baby
     checkout "time"
     commit id:"👶 baby" type:HIGHLIGHT
-    %% ------------------------------------
+
+    checkout "misc"
+    commit id:"scalajs" %% remove-start
 
     %% ------------------------------- 2018
     checkout "time"
