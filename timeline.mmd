@@ -15,12 +15,12 @@ config:
 ---
 gitGraph TB: %%LR:
     branch "work" order:1
+    branch "pet project" order:3
     checkout "time"
     commit id:"long time ago"
 
-    checkout "time"
     checkout "work"
-    commit id:"adtech startup" type:HIGHLIGHT
+    commit id:"architect @ big corp" type:HIGHLIGHT
 
     %% ------------------------------- 2016
     checkout "time"
@@ -29,32 +29,29 @@ gitGraph TB: %%LR:
 
     %% ------------- Start pet project
     checkout "time"
-    branch "pet project"  order:3
     checkout "pet project"
     commit id:"🤙 idea"
-    commit id:"Play framework" type:HIGHLIGHT
     %% ------------------------------------
 
-    branch "misc" order:2
-    checkout "misc"
+    checkout "pet project"
+    commit id:"Play framework" type:HIGHLIGHT
+
+    checkout "pet project"
     commit id:"scala"
 
     checkout "work"
-    merge "misc" id:"Spark"
+    commit id:"dev @ startup" type:HIGHLIGHT
+
+    checkout "work"
+    merge "pet project" id:"Spark"
 
     %% ------------------------------- 2017
     checkout "time"
     commit id:"2017"
     %% ------------------------------------
 
-    checkout "misc"
-    commit id:".grib files"
-
     checkout "time"
     commit id:"👶 baby" type:HIGHLIGHT
-
-    checkout "misc"
-    commit id:"scalajs" %% remove-start
 
     %% ------------------------------- 2018
     checkout "time"
@@ -63,23 +60,23 @@ gitGraph TB: %%LR:
 
     %% --------------------------- Scala.io
     checkout "work"
-    merge "misc" id:"Scala.io conf"
+    merge "pet project" id:"Scala.io conf"
     %% ------------------------------------
 
     checkout "work"
     commit id:"MongoDb"
 
     checkout "pet project"
-    merge "misc" id:"Ionic" type:HIGHLIGHT
+    commit id:"Ionic" type:HIGHLIGHT
 
     checkout "pet project"
     merge "work" id:"MeteorJS" type:HIGHLIGHT
 
     %% ---------------------------- Start Criteo
     checkout "work"
-    commit id:"Criteo" type:HIGHLIGHT
+    commit id:"dev @ Criteo" type:HIGHLIGHT
     checkout "time"
-    merge "work" id:"👔 new job" type:HIGHLIGHT
+    merge "work"
 
     commit id:"🏡 rent a house" type:HIGHLIGHT
 
@@ -125,12 +122,10 @@ gitGraph TB: %%LR:
 
 
     checkout "pet project"
-    commit id:"data validation"
-    commit id:"strong typing"
+    commit id:"data validation & strong typing"
 
-
-    checkout "misc"
-    merge "pet project" id:"schema-to-types" %% remove-end %% remove-start
+    branch "misc" order:2
+    commit id:"schema-to-types" %% remove-start
 
     checkout "work"
     merge "misc" id:"JSON schemas"
