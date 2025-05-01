@@ -53,21 +53,28 @@ gitGraph TB: %%LR:
     checkout "time"
     commit id:"👶 baby" type:HIGHLIGHT
 
-    %% ------------------------------- 2018
-    checkout "time"
-    commit id:"2018"
-    %% ------------------------------------
-
     %% --------------------------- Scala.io
     checkout "work"
     merge "pet project" id:"Scala.io conf"
     %% ------------------------------------
 
+    checkout "pet project"
+    commit id:"ScalaJs"
+
+    %% ------------------------------- 2018
+    checkout "time"
+    commit id:"2018"
+    %% ------------------------------------
+
+    checkout "work"
+    commit id:"Typescript"
+    checkout "pet project"
+    merge "work"
+    commit id:"Angular" type:HIGHLIGHT
+    commit id:"Ionic" type:HIGHLIGHT
+
     checkout "work"
     commit id:"MongoDb"
-
-    checkout "pet project"
-    commit id:"Ionic" type:HIGHLIGHT
 
     checkout "pet project"
     merge "work" id:"MeteorJS" type:HIGHLIGHT
@@ -85,10 +92,6 @@ gitGraph TB: %%LR:
     commit id:"2019"
     %% ------------------------------------
 
-    checkout "pet project"
-    commit id:"Angular"
-    commit id:"Typescript"
-
     checkout "work"
     merge "pet project" id:"CGrowth UI"
 
@@ -103,23 +106,25 @@ gitGraph TB: %%LR:
     checkout "work"
     merge "pet project" id:"Geoloc audiences"
 
-    checkout "pet project"
-    commit id:"notifications"
+    %% checkout "pet project"
+    %% commit id:"notifications"
 
-    checkout "work"
-    merge "pet project" id:"CGrowth alerts"
+    %% checkout "work"
+    %% merge "pet project" id:"CGrowth alerts"
 
-%% ------------------------------- 2021
+    %% ------------------------------- 2021
     checkout "time"
     commit id:"2021"
     %% ------------------------------------
+
+    checkout "work"
+    commit id:"User Data Platform"
 
     checkout "pet project"
     commit id:"github actions"
 
     checkout "work"
     merge "pet project" id:"OneKey"
-
 
     checkout "pet project"
     commit id:"data validation & strong typing"
@@ -177,15 +182,18 @@ gitGraph TB: %%LR:
     %% ------------------------------------
 
     checkout "pet project"
-    commit id:"server side rendering"
+    commit id:"SSR"
+
+    checkout "pet project"
+    commit id:"open graph"
+
+    checkout "work"
+    commit id:"Dev lead" type:HIGHLIGHT
 
     %% ------------------------------- 2025
     checkout "time"
     commit id:"2025"
     %% ------------------------------------
-
-    checkout "pet project"
-    commit id:"open graph"
 
     checkout "work"
     merge "pet project" id:"client metadata"
