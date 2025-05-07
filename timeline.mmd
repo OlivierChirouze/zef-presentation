@@ -138,30 +138,30 @@ gitGraph TB: %%LR:
     checkout "pet project"
     merge "misc"
 
+    checkout "misc"
+    merge "pet project" id:"consulting" %% remove-end %% remove-start
+
     %% ------------------------------- 2022
     checkout "time"
     commit id:"2022"
     %% ------------------------------------
 
-    checkout "misc"
-    merge "pet project" id:"consulting" %% remove-end %% remove-start
-
-    %% ------------------------------- 2023
-    checkout "time"
-    commit id:"2023"
-    %% ------------------------------------
-
     checkout "pet project"
     merge "misc"
 
-    checkout "pet project"
-    commit id:"open data"
-    commit id:"web crawler"
+    %% checkout "pet project"
+    %% commit id:"open data"
+    %% commit id:"web crawler"
 
     checkout "misc"
     merge "pet project" id:"waterspot-catalog" %% remove-end %% remove-start
     checkout "pet project"
     merge "misc"
+
+    %% ------------------------------- 2023
+    checkout "time"
+    commit id:"2023"
+    %% ------------------------------------
 
     %% ---------------------- Place to live
     checkout "misc"
@@ -173,8 +173,8 @@ gitGraph TB: %%LR:
     checkout "time"
     merge "misc" id:"🏡 buy a house" type:HIGHLIGHT
 
-    checkout "pet project"
-    commit id:"ImageKit"
+    %% checkout "pet project"
+    %% commit id:"ImageKit"
 
     %% ------------------------------- 2024
     checkout "time"
@@ -195,8 +195,8 @@ gitGraph TB: %%LR:
     commit id:"2025"
     %% ------------------------------------
 
-    checkout "work"
-    merge "pet project" id:"client metadata"
+    %% checkout "work"
+    %% merge "pet project" id:"client metadata"
 
     checkout "misc"
     merge "pet project" id:"talk" %% remove-end
