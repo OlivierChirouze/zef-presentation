@@ -23,8 +23,8 @@
                 .small {
                     width: 10%;
                     height: 10%;
-                    bottom: 0;
-                    left: 0;
+                    bottom: 4px;
+                    left: 4px;
                     z-index: 2;
                 }
                 #small-overlay {
@@ -99,8 +99,25 @@
                     }
                 }
 
-                // Init -----------------------------------------------------------------------------------
+                /**
+                 * Show the given iframe by setting its display to 'block'.
+                 * @param {HTMLIFrameElement} iframe - The iframe element to show.
+                 */
+                function showIframe(iframe) {
+                    console.debug("showIframe", iframe);
+                    iframe.style.opacity = 1;
+                }
 
+                /**
+                 * Hide the given iframe by setting its display to 'none'.
+                 * @param {HTMLIFrameElement} iframe - The iframe element to hide.
+                 */
+                function hideIframe(iframe) {
+                    console.debug("hideIframe", iframe);
+                    iframe.style.opacity = 0;
+                }
+
+                // Init -----------------------------------------------------------------------------------
 
                 // Make small iframe "clickable" to toggle via transparent layer
                 document.getElementById('small-overlay').addEventListener('click', () => toggleFrames());
@@ -131,8 +148,11 @@
                         }
                     });
                 });
-                // -----------------------------------------------------------------
 
+                // Initially, hide timeline. It will be shown for first section with data-show-timeline
+                hideIframe(timeline);
+
+                // -----------------------------------------------------------------
                 let reveal = null;
                 let sozi = null;
 
@@ -142,10 +162,20 @@
 
                     setState(false);
 
-                    // TODO when entering a particular slide, if it has an id, try to move the sozi player to that frame
+                    // -------------- Sync from presentation to timeline
+                    // when entering a particular slide, if it has an id, try to move the sozi player to that frame
                     reveal.addEventListener('slidechanged', (e) => {
                         const section = e.currentSlide;
                         const id = section.id;
+
+                        const isHideTimeline = section.attributes["data-hide-timeline"] !== undefined;
+
+                        if (isHideTimeline) {
+                            hideIframe(timeline);
+                        } else {
+                            showIframe(timeline);
+                        }
+
                         console.debug("reveal event: slidechanged", section);
                         if (id) {
                             moveToFrame(id);
@@ -178,9 +208,12 @@
                     // Make each commit clickable
                     const svg = contentWindow.document.querySelector('svg');
 
+                    // -------------- Sync from timeline to presentation
                     if (svg) {
                         const textElements = svg.querySelectorAll('text');
                         textElements.forEach(textElement => {
+                            // When clicking a particular commit on the timeline,
+                            // navigate the presentation to the corresponding slide
                             textElement.addEventListener('click', () => {
                                 const slideId = textElement.innerHTML;
                                 moveToSlide(slideId);
