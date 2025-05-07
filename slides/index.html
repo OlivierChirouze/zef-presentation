@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>reveal.js</title>
-
+    <title>How to build a mobile app to not get rich and famous</title>
 
     <link rel="stylesheet" href="dist/reset.css">
     <link rel="stylesheet" href="dist/reveal.css">
-    <link rel="stylesheet" href="dist/theme/black.css">
+    <link rel="stylesheet" href="dist/theme/white.css">
+    <link rel="stylesheet" href="dist/futurise.css">
 
     <!-- Theme used for syntax highlighted code -->
     <link rel="stylesheet" href="plugin/highlight/monokai.css">
@@ -18,7 +18,17 @@
 <body>
 <div class="reveal">
     <div class="slides">
-        <section id="long time ago">
+        <section class="title" data-background-image="images/template/background-title.jpg" data-auto-animate>
+            <h1>How to build a mobile app to</h1>
+            <h1>get rich and famous</h1>
+        </section>
+        <section class="title" data-background-image="images/template/background-title.jpg" data-auto-animate>
+            <h1>How to build a mobile app to</h1>
+            <h1 id="not">*not</h1>
+            <h1>get rich and famous</h1>
+        </section>
+
+        <section id="long time ago" data-background-image="images/template/background-top-left.png">
             <h1>long time ago</h1>
 
         </section>
@@ -250,6 +260,9 @@
 
         // Because when reducing the iframe to the small preview, it switches automatically to scroll view
         scrollActivationWidth: null,
+
+        transition: 'fade',
+        transitionSpeed: 'fast',
 
         // Learn about plugins: https://revealjs.com/plugins/
         plugins: [RevealHighlight, RevealNotes]
