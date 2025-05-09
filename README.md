@@ -21,6 +21,15 @@ The talk is a slides presentation that can be navigated through via a "timeline"
 - reciprocally, when a slide with id is shown, the corresponding timeline frame is shown
 - presenter can make one or the other frame reduced
 
+
+## Run the presentation
+
+```shell
+npx gulp serve
+```
+
+Access http://localhost:8000
+
 ## TODO
 - [ ] inkscape: add a masking layer in the svg image to hide everything except the time branch at the beginning
  

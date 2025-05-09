@@ -298,11 +298,19 @@ gulp.task('reload', () => gulp.src(['index.html'])
 
 gulp.task('serve', () => {
 
+    const cors = function (req, res, next) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        next();
+    };
+
     connect.server({
         root: root,
         port: port,
         host: host,
-        livereload: true
+        livereload: true,
+        middleware: function () {
+            return [cors];
+        }
     })
 
     const slidesRoot = root.endsWith('/') ? root : root + '/'

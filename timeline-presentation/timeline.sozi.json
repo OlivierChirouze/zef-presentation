@@ -24,7 +24,7 @@
   "exportToVideoBitRate": 2000000,
   "frames": [
     {
-      "frameId": "mermaid.js",
+      "frameId": "intro",
       "title": "first frame",
       "titleLevel": 0,
       "notes": "",
@@ -45,10 +45,10 @@
       },
       "cameraStates": {
         "__sozi_auto__": {
-          "cx": 922.6043544422215,
-          "cy": 155.2754029289168,
-          "width": 273.4334382365242,
-          "height": 170.834535917972,
+          "cx": 1374.6085936362488,
+          "cy": 105.26567771005044,
+          "width": 2975.9763838887643,
+          "height": 1859.7234545342876,
           "opacity": 1,
           "angle": 0,
           "clipped": false,
@@ -82,17 +82,17 @@
       },
       "cameraStates": {
         "__sozi_auto__": {
-          "cx": 290.4118982159742,
-          "cy": 210.33416803271385,
-          "width": 839.332212753644,
-          "height": 524.4482968294216,
+          "cx": 202.75652578504148,
+          "cy": 123.89520132352624,
+          "width": 815.9938956947755,
+          "height": 509.92440490989486,
           "opacity": 1,
           "angle": 0,
           "clipped": false,
           "clipXOffset": 0,
           "clipYOffset": 0,
           "clipWidthFactor": 1,
-          "clipHeightFactor": 1
+          "clipHeightFactor": 1.0001153655356998
         }
       },
       "cameraOffsets": {}
@@ -138,7 +138,7 @@
   "elementsToHide": [],
   "customFiles": [],
   "selectedFrames": [
-    "mermaid.js"
+    "frame8540"
   ],
   "selectedLayers": [
     "__sozi_auto__"
