@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="dist/reset.css">
     <link rel="stylesheet" href="dist/reveal.css">
-    <link rel="stylesheet" href="dist/theme/white.css">
+    <link rel="stylesheet" href="dist/theme/white.css" id="theme">
     <link rel="stylesheet" href="dist/futurise.css">
 
     <!-- Theme used for syntax highlighted code -->
@@ -282,6 +282,8 @@
 <script src="dist/reveal.js"></script>
 <script src="plugin/notes/notes.js"></script>
 <script src="plugin/highlight/highlight.js"></script>
+<script src="node_modules/reveal.js-menu/menu.js"></script>
+
 <script>
     // More info about initialization & config:
     // - https://revealjs.com/initialization/
@@ -299,7 +301,16 @@
         navigationMode: 'linear',
 
         // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [RevealHighlight, RevealNotes]
+        plugins: [RevealHighlight, RevealNotes, RevealMenu],
+
+        menu: {
+            themes: true, // Enables the theme switcher
+            transitions: false, // Optional: enable transition switcher
+            side: 'left',
+            width: 'normal',
+            openButton: false,
+        }
+
     });
 </script>
 </body>
