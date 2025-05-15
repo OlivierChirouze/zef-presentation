@@ -163,9 +163,20 @@
 
                     setState(false);
 
-                    // -------------- Sync from presentation to timeline
+                    const updateMainWindowHash = () => {
+                        const currentHash = reveal.getSlidePath();
+                        if (currentHash) {
+                            history.replaceState(null, '', `#${currentHash}`);
+                        }
+                    }
+
                     // when entering a particular slide, if it has an id, try to move the sozi player to that frame
                     reveal.addEventListener('slidechanged', (e) => {
+
+                        // Sync the main page URL with the slides iframe anchor
+                        updateMainWindowHash();
+
+                        // -------------- Sync from presentation to timeline
                         const section = e.currentSlide;
                         const id = section.id;
 
@@ -182,7 +193,18 @@
                             moveToFrame(id);
                         }
                     });
+
+                    reveal.addEventListener('fragmentshown', () => updateMainWindowHash());
+                    reveal.addEventListener('fragmenthidden', () => updateMainWindowHash());
                 };
+
+                // Append the main page anchor to the slides iframe src on page load
+                window.addEventListener('load', () => {
+                    const currentHash = window.location.hash;
+                    if (currentHash) {
+                        slides.src = `slides.html${currentHash}`;
+                    }
+                });
 
                 function moveToSlide(slideId) {
                     // Only if we can identify the corresponding slide
