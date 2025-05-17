@@ -11,7 +11,9 @@
     "schema": "script/build-svg.sh",
     "test": "gulp test",
     "start": "gulp serve",
-    "build": "gulp build"
+    "build": "gulp build",
+    "build:svg": "bash script/build-svg.sh",
+    "build:sozi": "python3 script/generate-sozi-frames.py timeline-presentation/timeline.svg timeline-presentation/timeline.sozi.json"
   },
   "author": {
     "name": "Hakim El Hattab",

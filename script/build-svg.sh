@@ -24,3 +24,5 @@ while IFS= read -r line; do
     start_id=$(echo $line | sed -n 's/.*\(id\|tag\):"\([^"]*\)".*/\2/p')
   fi
 done < timeline.mmd
+
+python3 script/add-layers.py timeline-presentation/timeline.svg timeline-presentation/timeline.svg
