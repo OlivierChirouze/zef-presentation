@@ -24,8 +24,8 @@
   "exportToVideoBitRate": 2000000,
   "frames": [
     {
-      "frameId": "intro",
-      "title": "first frame",
+      "frameId": "long time ago",
+      "title": "long time ago",
       "titleLevel": 0,
       "notes": "",
       "timeoutMs": 0,
@@ -34,6 +34,14 @@
       "showInFrameList": true,
       "showFrameNumber": true,
       "layerProperties": {
+        "mask": {
+          "link": false,
+          "referenceElementId": "",
+          "outlineElementId": "",
+          "transitionTimingFunction": "linear",
+          "transitionRelativeZoom": 0,
+          "transitionPathId": ""
+        },
         "__sozi_auto__": {
           "link": false,
           "referenceElementId": "",
@@ -44,92 +52,31 @@
         }
       },
       "cameraStates": {
-        "__sozi_auto__": {
-          "cx": 1374.6085936362488,
-          "cy": 105.26567771005044,
-          "width": 2975.9763838887643,
-          "height": 1859.7234545342876,
+        "mask": {
+          "cx": -120.36401335411207,
+          "cy": 110.3051710777455,
+          "width": 402.59485329428054,
+          "height": 251.6954646510363,
           "opacity": 1,
           "angle": 0,
           "clipped": false,
           "clipXOffset": 0,
           "clipYOffset": 0,
           "clipWidthFactor": 1,
-          "clipHeightFactor": 1.0000100298890693
-        }
-      },
-      "cameraOffsets": {}
-    },
-    {
-      "frameId": "frame8540",
-      "title": "first frame",
-      "titleLevel": 0,
-      "notes": "",
-      "timeoutMs": 0,
-      "timeoutEnable": false,
-      "transitionDurationMs": 1000,
-      "showInFrameList": true,
-      "showFrameNumber": true,
-      "layerProperties": {
+          "clipHeightFactor": 1.000433632754277
+        },
         "__sozi_auto__": {
-          "link": false,
-          "referenceElementId": "",
-          "outlineElementId": "",
-          "transitionTimingFunction": "linear",
-          "transitionRelativeZoom": 0,
-          "transitionPathId": ""
-        }
-      },
-      "cameraStates": {
-        "__sozi_auto__": {
-          "cx": 202.75652578504148,
-          "cy": 123.89520132352624,
-          "width": 815.9938956947755,
-          "height": 509.92440490989486,
+          "cx": 12.486375403013563,
+          "cy": 87.01665671394657,
+          "width": 402.59485329428054,
+          "height": 251.6954646510363,
           "opacity": 1,
           "angle": 0,
           "clipped": false,
           "clipXOffset": 0,
           "clipYOffset": 0,
           "clipWidthFactor": 1,
-          "clipHeightFactor": 1.0001153655356998
-        }
-      },
-      "cameraOffsets": {}
-    },
-    {
-      "frameId": "frame3203",
-      "title": "first frame",
-      "titleLevel": 0,
-      "notes": "",
-      "timeoutMs": 0,
-      "timeoutEnable": false,
-      "transitionDurationMs": 4000,
-      "showInFrameList": true,
-      "showFrameNumber": true,
-      "layerProperties": {
-        "__sozi_auto__": {
-          "link": false,
-          "referenceElementId": "",
-          "outlineElementId": "",
-          "transitionTimingFunction": "linear",
-          "transitionRelativeZoom": 0,
-          "transitionPathId": ""
-        }
-      },
-      "cameraStates": {
-        "__sozi_auto__": {
-          "cx": 2472.568182462167,
-          "cy": 210.33416803271385,
-          "width": 839.332212753644,
-          "height": 524.4482968294216,
-          "opacity": 1,
-          "angle": 0,
-          "clipped": false,
-          "clipXOffset": 0,
-          "clipYOffset": 0,
-          "clipWidthFactor": 1,
-          "clipHeightFactor": 1
+          "clipHeightFactor": 1.000433632754277
         }
       },
       "cameraOffsets": {}
@@ -138,10 +85,13 @@
   "elementsToHide": [],
   "customFiles": [],
   "selectedFrames": [
-    "frame8540"
+    "long time ago"
   ],
   "selectedLayers": [
+    "mask",
     "__sozi_auto__"
   ],
-  "editableLayers": []
+  "editableLayers": [
+    "mask"
+  ]
 }
