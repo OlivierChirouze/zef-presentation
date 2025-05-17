@@ -198,7 +198,8 @@
 
                         const isHideTimeline = section.attributes["data-hide-timeline"] !== undefined;
 
-                        if (isHideTimeline) {
+                        // Hide or show the timeline iframe based on the slide's data attribute, but only if timeline is reduced
+                        if (isHideTimeline && !isIframeFullscreen(timeline)) {
                             hideIframe(timeline);
                         } else {
                             showIframe(timeline);
