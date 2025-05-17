@@ -256,6 +256,9 @@
                         });
                     }
 
+                    // Remove the timeline frame number
+                    contentWindow.document.querySelector('.sozi-frame-number').style.display = 'none';
+
                     // When the timeline presentation moves to a particular frame, try to sync the slides
                     sozi.playerController.addListener("moveToFrame", (f) => {
                         if (f == null)
