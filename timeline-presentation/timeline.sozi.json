@@ -24,8 +24,8 @@
   "exportToVideoBitRate": 2000000,
   "frames": [
     {
-      "frameId": "start",
-      "title": "overview",
+      "frameId": "intro",
+      "title": "intro",
       "titleLevel": 0,
       "notes": "",
       "timeoutMs": 0,
@@ -3043,7 +3043,7 @@
   "elementsToHide": [],
   "customFiles": [],
   "selectedFrames": [
-    "🤙 idea"
+    "long time ago"
   ],
   "selectedLayers": [
     "mask",
