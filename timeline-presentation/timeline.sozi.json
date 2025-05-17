@@ -2286,8 +2286,8 @@
             "cameraOffsets": {}
         },
         {
-            "frameId": "SSR",
-            "title": "SSR",
+            "frameId": "open graph",
+            "title": "open graph",
             "titleLevel": 0,
             "notes": "",
             "timeoutMs": 0,
@@ -2344,8 +2344,8 @@
             "cameraOffsets": {}
         },
         {
-            "frameId": "open graph",
-            "title": "open graph",
+            "frameId": "SSR",
+            "title": "SSR",
             "titleLevel": 0,
             "notes": "",
             "timeoutMs": 0,
