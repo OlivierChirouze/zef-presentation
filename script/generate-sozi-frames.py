@@ -35,10 +35,10 @@ commit_labels = [
 
 # Consider the first frame has been set manually and use it as a template
 commit_labels = commit_labels[1:] # Ignore the first commit_label
-sozi_config["frames"] = sozi_config["frames"][:1]  # Keep only the first element
+sozi_config["frames"] = sozi_config["frames"][:2]  # Keep only "overview" and the first element after "overview"
 
-# Use the first frame as a template
-first_frame = sozi_config["frames"][0]
+# Use the first frame after "overview" as a template
+first_frame = sozi_config["frames"][1]
 
 # Initial positions
 original_mask_x = first_frame["cameraStates"]["mask"]["cx"]
