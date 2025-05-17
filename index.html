@@ -26,7 +26,6 @@
                     height: 10%;
                     bottom: 4px;
                     z-index: 2;
-                    box-shadow: inset 0 0 3px 5px #fff;
                 }
                 .left {
                     left: 4px;
@@ -50,6 +49,7 @@
             <script>
                 const slides = document.getElementById('slides');
                 const timeline = document.getElementById('timeline');
+                const overlay = document.getElementById('small-overlay');
 
                 /**
                  * Set the state of the slides and timeline iframes.
@@ -90,6 +90,7 @@
                         iframe.classList.remove('small');
                         iframe.classList.remove('left');
                         iframe.classList.remove('right');
+
                         iframe.focus();
 
                         if (iframe === slides) {
@@ -105,11 +106,17 @@
                         iframe.classList.remove('fullscreen');
 
                         if (iframe === slides) {
+                            // Reducing slides
                             iframe.classList.add('right');
+                            overlay.classList.remove('left');
+                            overlay.classList.add('right');
                             // hide controls
                             iframe.contentDocument.querySelector(".controls").style.display = "none";
                         } else {
+                            // Reducing timeline
                             iframe.classList.add('left');
+                            overlay.classList.remove('right');
+                            overlay.classList.add('left');
                             // Hide the "mask" layer
                             iframe.contentDocument.querySelector("#mask").style.display = "none";
                         }
@@ -137,7 +144,7 @@
                 // Init -----------------------------------------------------------------------------------
 
                 // Make small iframe "clickable" to toggle via transparent layer
-                document.getElementById('small-overlay').addEventListener('click', () => toggleFrames());
+                overlay.addEventListener('click', () => toggleFrames());
 
                 // Event configuration ---------------------------------------------
                 const toggleKey = 'y';
