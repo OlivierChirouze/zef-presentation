@@ -87,6 +87,9 @@
                         if (iframe === slides) {
                             // show controls
                             iframe.contentDocument.querySelector(".controls").style.display = "block";
+                        } else {
+                            // Show the "mask" layer
+                            iframe.contentDocument.querySelector("#mask").style.display = "block";
                         }
 
                     } else {
@@ -96,6 +99,9 @@
                         if (iframe === slides) {
                             // hide controls
                             iframe.contentDocument.querySelector(".controls").style.display = "none";
+                        } else {
+                            // Hide the "mask" layer
+                            iframe.contentDocument.querySelector("#mask").style.display = "none";
                         }
                     }
                 }
@@ -238,6 +244,7 @@
                         textElements.forEach(textElement => {
                             // When clicking a particular commit on the timeline,
                             // navigate the presentation to the corresponding slide
+                            // FIXME first make sure the slide exists on slides?
                             textElement.addEventListener('click', () => {
                                 const slideId = textElement.innerHTML;
                                 moveToSlide(slideId);
