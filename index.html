@@ -111,9 +111,9 @@
          */
         function expandIframe(iframe) {
             iframe.classList.add('fullscreen');
-            iframe.classList.remove('small');
             iframe.classList.remove('left');
             iframe.classList.remove('right');
+            iframe.classList.remove('small');
 
             showIframe(iframe);
             iframe.focus();
@@ -224,11 +224,11 @@
 
                 // -------------- Sync from presentation to timeline
                 const section = e.currentSlide;
+                console.debug("reveal event: slidechanged", section);
+
                 const id = section.id;
 
                 const isHideTimeline = section.attributes["data-hide-timeline"] !== undefined;
-
-                // Hide or show the timeline iframe based on the slide's data attribute, but only if timeline is reduced
                 if (isHideTimeline && !isIframeFullscreen(timeline)) {
                     hideIframe(timeline);
                 } else {
@@ -245,8 +245,7 @@
                     focusSlides();
                 }
 
-                console.debug("reveal event: slidechanged", section);
-                if (id) {
+                if (id && !isIframeFullscreen(timeline)) {
                     moveToFrame(id);
                 }
             });
