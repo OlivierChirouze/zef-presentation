@@ -352,16 +352,18 @@ Fast forward almost 15 years.
             </ul>
 
                 <h2 class="fragment">
-                    ❤️
+                    ❤️I love it
                 </h2>
 
             </section>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- dev @ startup -->
-        <section id="dev @ startup">
-            <h1>dev @ startup</h1>
-
+        <section id="dev @ startup" data-switch-to-timeline>
+            <h1>Dev for work</h1>
+            <aside class="notes" data-markdown>
+                - now some things happen on the professional side
+            </aside>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- Spark -->
@@ -645,7 +647,12 @@ Fast forward almost 15 years.
         navigationMode: 'linear',
 
         // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [RevealHighlight, RevealNotes, RevealMenu, OneTimer],
+        plugins: [
+            RevealHighlight,
+            RevealNotes,
+            RevealMenu,
+            // OneTimer // FIXME activate for presentation
+        ],
 
         menu: {
             themes: true, // Enables the theme switcher

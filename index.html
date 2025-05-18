@@ -214,6 +214,18 @@
                             showIframe(timeline);
                         }
 
+                        const isSwitchToTimeline = section.attributes["data-switch-to-timeline"] !== undefined;
+                        if (isSwitchToTimeline && !isIframeFullscreen(timeline)) {
+                            // Switch to timeline
+                            toggleFrames();
+                        }
+
+                        const isSwitchToSlides = section.attributes["data-switch-to-slides"] !== undefined;
+                        if (isSwitchToSlides && !isIframeFullscreen(slides)) {
+                            // Switch to slides
+                            toggleFrames();
+                        }
+
                         console.debug("reveal event: slidechanged", section);
                         if (id) {
                             moveToFrame(id);
