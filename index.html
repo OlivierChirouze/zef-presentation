@@ -1,314 +1,321 @@
 <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>How to build a mobile app to not get rich and famous</title>
-            <style>
-                body, html {
-                    margin: 0;
-                    padding: 0;
-                    height: 100%;
-                    overflow: hidden;
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to build a mobile app to not get rich and famous</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        iframe {
+            border: none;
+            position: absolute;
+            transition: opacity 0.5s ease-in-out; /* Add smooth transition for opacity */
+        }
+
+        .fullscreen {
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            transition: opacity 0.5s ease-in-out; /* Add smooth transition for opacity */
+        }
+
+        .small {
+            width: 10%;
+            height: 10%;
+            bottom: 4px;
+            z-index: 2;
+            transition: all 0.5s ease-in-out; /* Smooth transition for size and position */
+        }
+
+        .left {
+            left: 4px;
+        }
+
+        .right {
+            right: 4px;
+        }
+
+        #small-overlay {
+            background-color: transparent;
+            cursor: pointer;
+            position: absolute;
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="slides" src="slides.html"></iframe>
+    <iframe id="timeline" src="timeline-presentation/timeline.sozi.html"></iframe>
+    <div class="small left" id="small-overlay"></div>
+
+    <script>
+        const slides = document.getElementById('slides');
+        const timeline = document.getElementById('timeline');
+        const overlay = document.getElementById('small-overlay');
+
+        /**
+         * Focus on the timeline iframe by setting it to fullscreen and reducing the slides iframe.
+         */
+        function focusTimeline() {
+            reduceIframeToRight(slides);
+            // Hide controls
+            slides.contentDocument.querySelector(".controls").style.display = "none";
+
+            expandIframe(timeline);
+            // Show the "mask" layer
+            timeline.contentDocument.querySelector("#mask").style.opacity = 1;
+        }
+
+        /**
+         * Focus on the slides iframe by setting it to fullscreen and reducing the timeline iframe.
+         */
+        function focusSlides() {
+            expandIframe(slides);
+            // Show controls
+            slides.contentDocument.querySelector(".controls").style.display = "block";
+
+            reduceIframeToLeft(timeline);
+            // Hide the "mask" layer
+            const mask = timeline.contentDocument.querySelector("#mask");
+            mask.style.transition = "opacity 0.5s ease-in-out"; // Add smooth transition for opacity
+            mask.style.opacity = 0; // Fade out the mask
+        }
+
+        /**
+         * Toggle the size of the slides and timeline iframes.
+         */
+        function toggleFrames() {
+            console.debug("toggleFrames");
+            isIframeFullscreen(slides) ? focusTimeline() : focusSlides();
+        }
+
+        /**
+         * Check if an iframe is in fullscreen mode.
+         * @param {HTMLElement} iframe - The iframe element to check.
+         * @returns {boolean} - Returns true if the iframe is in fullscreen mode, otherwise false.
+         */
+        function isIframeFullscreen(iframe) {
+            return iframe.classList.contains('fullscreen');
+        }
+
+        /**
+         * Expand an iframe to fullscreen.
+         * @param {HTMLIFrameElement} iframe - The iframe element to expand.
+         */
+        function expandIframe(iframe) {
+            iframe.classList.add('fullscreen');
+            iframe.classList.remove('small');
+            iframe.classList.remove('left');
+            iframe.classList.remove('right');
+
+            showIframe(iframe);
+            iframe.focus();
+        }
+
+        /**
+         * Reduce an iframe to a small size and position it to the right.
+         * @param {HTMLIFrameElement} iframe - The iframe element to reduce.
+         */
+        function reduceIframeToRight(iframe) {
+            iframe.classList.add('small', 'right');
+            iframe.classList.remove('fullscreen');
+
+            // Move overlay from left to right
+            overlay.classList.remove('left');
+            overlay.classList.add('right');
+        }
+
+        /**
+         * Reduce an iframe to a small size and position it to the left.
+         * @param {HTMLIFrameElement} iframe - The iframe element to reduce.
+         */
+        function reduceIframeToLeft(iframe) {
+            iframe.classList.add('small', 'left');
+            iframe.classList.remove('fullscreen');
+
+            // Move overlay from right to left
+            overlay.classList.remove('right');
+            overlay.classList.add('left');
+        }
+
+        /**
+         * Show the given iframe by setting its display to 'block'.
+         * @param {HTMLIFrameElement} iframe - The iframe element to show.
+         */
+        function showIframe(iframe) {
+            console.debug("showIframe", iframe);
+            iframe.style.opacity = 1;
+        }
+
+        /**
+         * Hide the given iframe by setting its display to 'none'.
+         * @param {HTMLIFrameElement} iframe - The iframe element to hide.
+         */
+        function hideIframe(iframe) {
+            console.debug("hideIframe", iframe);
+            iframe.style.opacity = 0;
+        }
+
+        // Init -----------------------------------------------------------------------------------
+
+        // Make small iframe "clickable" to toggle via transparent layer
+        overlay.addEventListener('click', () => toggleFrames());
+
+        // Event configuration ---------------------------------------------
+        const toggleKey = 'y';
+
+        // Event listener for keydown event to toggle frames
+        window.addEventListener('keydown', function(event) {
+            if (event.key === toggleKey) {
+                toggleFrames();
+            }
+        });
+
+        // Event listener for message event to toggle frames
+        window.addEventListener('message', function(event) {
+            if (event.data === 'toggleFrames') {
+                toggleFrames();
+            }
+        });
+
+        // Add event listener to each iframe to listen for keydown event
+        const iframes = document.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+            iframe.contentWindow.addEventListener('keydown', function(event) {
+                if (event.key === toggleKey) {
+                    console.debug("keyboard event t");
+                    window.postMessage('toggleFrames', '*');
+                }
+            });
+        });
+
+        // Initially, hide timeline. It will be shown for first section with data-show-timeline
+        hideIframe(timeline);
+
+        // -----------------------------------------------------------------
+        let reveal = null;
+        let sozi = null;
+
+        slides.onload = (e) => {
+            const myWindow = e.target.contentWindow;
+            reveal = myWindow.Reveal;
+
+            focusSlides(); // Initially focus on slides
+
+            const updateMainWindowHash = () => {
+                const currentHash = reveal.getSlidePath();
+                if (currentHash) {
+                    history.replaceState(null, '', `#${currentHash}`);
+                }
+            }
+
+            // when entering a particular slide, if it has an id, try to move the sozi player to that frame
+            reveal.addEventListener('slidechanged', (e) => {
+
+                // Sync the main page URL with the slides iframe anchor
+                updateMainWindowHash();
+
+                // -------------- Sync from presentation to timeline
+                const section = e.currentSlide;
+                const id = section.id;
+
+                const isHideTimeline = section.attributes["data-hide-timeline"] !== undefined;
+
+                // Hide or show the timeline iframe based on the slide's data attribute, but only if timeline is reduced
+                if (isHideTimeline && !isIframeFullscreen(timeline)) {
+                    hideIframe(timeline);
+                } else {
+                    showIframe(timeline);
                 }
 
-                iframe {
-                    border: none;
-                    position: absolute;
-                    transition: opacity 0.5s ease-in-out; /* Add smooth transition for opacity */
+                const isSwitchToTimeline = section.attributes["data-switch-to-timeline"] !== undefined;
+                if (isSwitchToTimeline) {
+                    focusTimeline();
                 }
 
-                .fullscreen {
-                    width: 100%;
-                    height: 100%;
-                    z-index: 1;
-                    transition: opacity 0.5s ease-in-out; /* Add smooth transition for opacity */
+                const isSwitchToSlides = section.attributes["data-switch-to-slides"] !== undefined;
+                if (isSwitchToSlides) {
+                    focusSlides();
                 }
 
-                .small {
-                    width: 10%;
-                    height: 10%;
-                    bottom: 4px;
-                    z-index: 2;
-                    transition: all 0.5s ease-in-out; /* Smooth transition for size and position */
+                console.debug("reveal event: slidechanged", section);
+                if (id) {
+                    moveToFrame(id);
                 }
+            });
 
-                .left {
-                    left: 4px;
-                }
+            reveal.addEventListener('fragmentshown', () => updateMainWindowHash());
+            reveal.addEventListener('fragmenthidden', () => updateMainWindowHash());
+        };
 
-                .right {
-                    right: 4px;
-                }
+        // Append the main page anchor to the slides iframe src on page load
+        window.addEventListener('load', () => {
+            const currentHash = window.location.hash;
+            if (currentHash) {
+                slides.src = `slides.html${currentHash}`;
+            }
+        });
 
-                #small-overlay {
-                    background-color: transparent;
-                    cursor: pointer;
-                    position: absolute;
-                    z-index: 3;
-                }
-            </style>
-        </head>
-        <body>
-            <iframe id="slides" src="slides.html"></iframe>
-            <iframe id="timeline" src="timeline-presentation/timeline.sozi.html"></iframe>
-            <div class="small left" id="small-overlay"></div>
+        function moveToSlide(slideId) {
+            // Only if we can identify the corresponding slide
+            const section = slides.contentDocument.getElementById(slideId);
+            if (section) {
+                console.debug("move to slide ", slideId);
+                const indices = reveal.getIndices(section);
+                reveal.slide(indices.h, indices.v);
+            }
+        }
 
-            <script>
-                const slides = document.getElementById('slides');
-                const timeline = document.getElementById('timeline');
-                const overlay = document.getElementById('small-overlay');
+        function moveToFrame(slideId) {
+            // FIXME make sure the frame exists, otherwise ignore
+            console.debug("sozi.moveToFrame", slideId);
+            if (sozi.playerController.player.findFrame(slideId) != null)
+                sozi.playerController.moveToFrame(slideId);
+        }
 
-                /**
-                 * Set the state of the slides and timeline iframes.
-                 * @param {boolean} isSlidesFullscreen - If true, set the slides iframe to fullscreen; otherwise, set it to small.
-                 * @returns {HTMLElement} - Returns the slides iframe.
-                 */
-                function setState(isSlidesFullscreen) {
-                    setIframeSize(slides, !isSlidesFullscreen);
-                    setIframeSize(timeline, isSlidesFullscreen);
-                }
+        // Configure the sync between timeline and slides
+        timeline.onload = (e) => {
+            const contentWindow = e.target.contentWindow;
+            sozi = contentWindow.sozi;
 
-                /**
-                 * Toggle the size of the slides and timeline iframes.
-                 */
-                function toggleFrames() {
-                    console.debug("toggleFrames");
-                    const isSlidesFullscreen = isIframeFullscreen(slides);
-                    setState(isSlidesFullscreen);
-                }
+            // Make each commit clickable
+            const svg = contentWindow.document.querySelector('svg');
 
-                /**
-                 * Check if an iframe is in fullscreen mode.
-                 * @param {HTMLElement} iframe - The iframe element to check.
-                 * @returns {boolean} - Returns true if the iframe is in fullscreen mode, otherwise false.
-                 */
-                function isIframeFullscreen(iframe) {
-                    return iframe.classList.contains('fullscreen');
-                }
-
-                /**
-                 * Set the size of an iframe to either small or fullscreen.
-                 * @param {HTMLIFrameElement} iframe - The iframe element to resize.
-                 * @param {boolean} fullscreen - If true, set to fullscreen; otherwise, set to small.
-                 */
-                function setIframeSize(iframe, fullscreen) {
-                    if (fullscreen) {
-                        iframe.classList.add('fullscreen');
-                        iframe.classList.remove('small');
-                        iframe.classList.remove('left');
-                        iframe.classList.remove('right');
-
-                        showIframe(iframe);
-                        iframe.focus();
-
-                        if (iframe === slides) {
-                            // show controls
-                            iframe.contentDocument.querySelector(".controls").style.display = "block";
-                        } else {
-                            // Show the "mask" layer
-                            iframe.contentDocument.querySelector("#mask").style.opacity = 1;
-                        }
-
-                    } else {
-                        iframe.classList.add('small');
-                        iframe.classList.remove('fullscreen');
-
-                        if (iframe === slides) {
-                            // Reducing slides
-                            iframe.classList.add('right');
-                            overlay.classList.remove('left');
-                            overlay.classList.add('right');
-                            // hide controls
-                            iframe.contentDocument.querySelector(".controls").style.display = "none";
-                        } else {
-                            // Reducing timeline
-                            iframe.classList.add('left');
-                            overlay.classList.remove('right');
-                            overlay.classList.add('left');
-
-                            // Hide the "mask" layer
-                            const mask = iframe.contentDocument.querySelector("#mask");
-                            mask.style.transition = "opacity 0.5s ease-in-out"; // Add smooth transition for opacity
-                            mask.style.opacity = 0; // Fade out the mask
-                        }
-                    }
-                }
-
-                /**
-                 * Show the given iframe by setting its display to 'block'.
-                 * @param {HTMLIFrameElement} iframe - The iframe element to show.
-                 */
-                function showIframe(iframe) {
-                    console.debug("showIframe", iframe);
-                    iframe.style.opacity = 1;
-                }
-
-                /**
-                 * Hide the given iframe by setting its display to 'none'.
-                 * @param {HTMLIFrameElement} iframe - The iframe element to hide.
-                 */
-                function hideIframe(iframe) {
-                    console.debug("hideIframe", iframe);
-                    iframe.style.opacity = 0;
-                }
-
-                // Init -----------------------------------------------------------------------------------
-
-                // Make small iframe "clickable" to toggle via transparent layer
-                overlay.addEventListener('click', () => toggleFrames());
-
-                // Event configuration ---------------------------------------------
-                const toggleKey = 'y';
-
-                // Event listener for keydown event to toggle frames
-                window.addEventListener('keydown', function(event) {
-                    if (event.key === toggleKey) {
+            // -------------- Sync from timeline to presentation
+            if (svg) {
+                const textElements = svg.querySelectorAll('text');
+                textElements.forEach(textElement => {
+                    // When clicking a particular commit on the timeline,
+                    // navigate the presentation to the corresponding slide
+                    // FIXME first make sure the slide exists on slides?
+                    textElement.addEventListener('click', () => {
+                        const slideId = textElement.innerHTML;
+                        moveToSlide(slideId);
                         toggleFrames();
-                    }
-                });
-
-                // Event listener for message event to toggle frames
-                window.addEventListener('message', function(event) {
-                    if (event.data === 'toggleFrames') {
-                        toggleFrames();
-                    }
-                });
-
-                // Add event listener to each iframe to listen for keydown event
-                const iframes = document.querySelectorAll('iframe');
-                iframes.forEach(iframe => {
-                    iframe.contentWindow.addEventListener('keydown', function(event) {
-                        if (event.key === toggleKey) {
-                            console.debug("keyboard event t");
-                            window.postMessage('toggleFrames', '*');
-                        }
+                        // Also, try to re-align sozy frame
+                        moveToFrame(slideId);
                     });
+                    textElement.style.cursor = 'pointer';
                 });
+            }
 
-                // Initially, hide timeline. It will be shown for first section with data-show-timeline
-                hideIframe(timeline);
+            // Remove the timeline frame number
+            contentWindow.document.querySelector('.sozi-frame-number').style.display = 'none';
 
-                // -----------------------------------------------------------------
-                let reveal = null;
-                let sozi = null;
-
-                slides.onload = (e) => {
-                    const myWindow = e.target.contentWindow;
-                    reveal = myWindow.Reveal;
-
-                    setState(false);
-
-                    const updateMainWindowHash = () => {
-                        const currentHash = reveal.getSlidePath();
-                        if (currentHash) {
-                            history.replaceState(null, '', `#${currentHash}`);
-                        }
-                    }
-
-                    // when entering a particular slide, if it has an id, try to move the sozi player to that frame
-                    reveal.addEventListener('slidechanged', (e) => {
-
-                        // Sync the main page URL with the slides iframe anchor
-                        updateMainWindowHash();
-
-                        // -------------- Sync from presentation to timeline
-                        const section = e.currentSlide;
-                        const id = section.id;
-
-                        const isHideTimeline = section.attributes["data-hide-timeline"] !== undefined;
-
-                        // Hide or show the timeline iframe based on the slide's data attribute, but only if timeline is reduced
-                        if (isHideTimeline && !isIframeFullscreen(timeline)) {
-                            hideIframe(timeline);
-                        } else {
-                            showIframe(timeline);
-                        }
-
-                        const isSwitchToTimeline = section.attributes["data-switch-to-timeline"] !== undefined;
-                        if (isSwitchToTimeline) {
-                            // Switch to timeline
-                            setState(false);
-                        }
-
-                        const isSwitchToSlides = section.attributes["data-switch-to-slides"] !== undefined;
-                        if (isSwitchToSlides) {
-                            // Switch to slides
-                            setState(true);
-                        }
-
-                        console.debug("reveal event: slidechanged", section);
-                        if (id) {
-                            moveToFrame(id);
-                        }
-                    });
-
-                    reveal.addEventListener('fragmentshown', () => updateMainWindowHash());
-                    reveal.addEventListener('fragmenthidden', () => updateMainWindowHash());
-                };
-
-                // Append the main page anchor to the slides iframe src on page load
-                window.addEventListener('load', () => {
-                    const currentHash = window.location.hash;
-                    if (currentHash) {
-                        slides.src = `slides.html${currentHash}`;
-                    }
-                });
-
-                function moveToSlide(slideId) {
-                    // Only if we can identify the corresponding slide
-                    const section = slides.contentDocument.getElementById(slideId);
-                    if (section) {
-                        console.debug("move to slide ", slideId);
-                        const indices = reveal.getIndices(section);
-                        reveal.slide(indices.h, indices.v);
-                    }
-                }
-
-                function moveToFrame(slideId) {
-                    // FIXME make sure the frame exists, otherwise ignore
-                    console.debug("sozi.moveToFrame", slideId);
-                    if (sozi.playerController.player.findFrame(slideId) != null)
-                        sozi.playerController.moveToFrame(slideId);
-                }
-
-                // Configure the sync between timeline and slides
-                timeline.onload = (e) => {
-                    const contentWindow = e.target.contentWindow;
-                    sozi = contentWindow.sozi;
-
-                    // Make each commit clickable
-                    const svg = contentWindow.document.querySelector('svg');
-
-                    // -------------- Sync from timeline to presentation
-                    if (svg) {
-                        const textElements = svg.querySelectorAll('text');
-                        textElements.forEach(textElement => {
-                            // When clicking a particular commit on the timeline,
-                            // navigate the presentation to the corresponding slide
-                            // FIXME first make sure the slide exists on slides?
-                            textElement.addEventListener('click', () => {
-                                const slideId = textElement.innerHTML;
-                                moveToSlide(slideId);
-                                toggleFrames();
-                                // Also, try to re-align sozy frame
-                                moveToFrame(slideId);
-                            });
-                            textElement.style.cursor = 'pointer';
-                        });
-                    }
-
-                    // Remove the timeline frame number
-                    contentWindow.document.querySelector('.sozi-frame-number').style.display = 'none';
-
-                    // When the timeline presentation moves to a particular frame, try to sync the slides
-                    sozi.playerController.addListener("moveToFrame", (f) => {
-                        if (f == null)
-                            return;
-                        console.debug("sozi event: moveToFrame", f);
-                        moveToSlide(f.frameId);
-                    })
-                };
-            </script>
-        </body>
-        </html>
+            // When the timeline presentation moves to a particular frame, try to sync the slides
+            sozi.playerController.addListener("moveToFrame", (f) => {
+                if (f == null)
+                    return;
+                console.debug("sozi event: moveToFrame", f);
+                moveToSlide(f.frameId);
+            })
+        };
+    </script>
+</body>
+</html>
