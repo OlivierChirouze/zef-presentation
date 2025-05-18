@@ -13,3 +13,14 @@
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
 	text-transform: none;
 }
+
+.reveal .progress span {
+	background-color: #ff6505;
+}
+
+.reveal button.navigate-right.enabled,
+.reveal button.navigate-left.enabled,
+.reveal button.navigate-down.enabled,
+.reveal button.navigate-up.enabled {
+	color: #ff6505;
+}
