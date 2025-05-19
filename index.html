@@ -216,6 +216,11 @@
                 }
             }
 
+            let isOnOverview = false;
+
+            reveal.addEventListener('overviewshown', () => isOnOverview = true);
+            reveal.addEventListener('overviewhidden', () => isOnOverview = false);
+
             // when entering a particular slide, if it has an id, try to move the sozi player to that frame
             reveal.addEventListener('slidechanged', (e) => {
 
@@ -236,7 +241,7 @@
                 }
 
                 const isSwitchToTimeline = section.attributes["data-switch-to-timeline"] !== undefined;
-                if (isSwitchToTimeline) {
+                if (isSwitchToTimeline && !isOnOverview) {
                     focusTimeline();
                 }
 
