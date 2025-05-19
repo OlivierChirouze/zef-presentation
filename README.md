@@ -27,8 +27,9 @@ The talk is a slides presentation that can be navigated through via a "timeline"
 - for this presentation:
   - [ ] 🖥️ shell: start serving the presentation `npm run start`
   - [ ] 🌐 Browser: (of course) open the presentation (http://localhost:8100)
-  - [ ] Mobile: open the presentation as well, directly from github for simplicity (https://olivierchirouze.github.io/zef-presentation/)
-- for Petole project
+  - [ ] Mobile: open the presentation as well, directly from github for simplicity [Github pages](https://olivierchirouze.github.io/zef-presentation/)
+- [ ] 🧑‍💻 WebStorm: enter presentation mode and/or increase editor font size globally
+- for zef project
   - [ ] 🧑‍💻 WebStorm: debug backend (`npm run backend:run`)
   - [ ] 🖥️ shell: start frontend `npm run frontend:start`
   - [ ] 🔌 connect phone with cable
@@ -42,3 +43,6 @@ The talk is a slides presentation that can be navigated through via a "timeline"
 - for "A Place to Live" project
   - [ ] 🧑‍💻 WebStorm: debug backend
   - [ ] 🖥️ shell: start frontend
+- For external services:
+  - [ ] 🌐 open [ImageKit](https://imagekit.io/dashboard/media-library/L2dlYXIvZHVvdG9uZQ)
+  - [ ] 🌐 open [Galaxy cloud](https://eu-west-1.galaxy.meteor.com/app/petole.eu.meteorapp.com/logs)
