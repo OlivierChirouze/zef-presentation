@@ -13,7 +13,8 @@
     "start": "gulp serve",
     "build": "gulp build",
     "build:svg": "bash script/build-svg.sh",
-    "build:sozi": "python3 script/generate-sozi-frames.py timeline-presentation/timeline.svg timeline-presentation/timeline.sozi.json"
+    "build:sozi": "python3 script/generate-sozi-frames.py timeline-presentation/timeline.svg timeline-presentation/timeline.sozi.json",
+    "slides:format": "python3 script/format-slides.py slides.html"
   },
   "author": {
     "name": "Hakim El Hattab",
