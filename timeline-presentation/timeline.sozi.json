@@ -2402,6 +2402,64 @@
       "cameraOffsets": {}
     },
     {
+      "frameId": "ImageKit",
+      "title": "ImageKit",
+      "titleLevel": 0,
+      "notes": "",
+      "timeoutMs": 0,
+      "timeoutEnable": false,
+      "transitionDurationMs": 1000,
+      "showInFrameList": true,
+      "showFrameNumber": true,
+      "layerProperties": {
+        "mask": {
+          "link": false,
+          "referenceElementId": "",
+          "outlineElementId": "",
+          "transitionTimingFunction": "linear",
+          "transitionRelativeZoom": 0,
+          "transitionPathId": ""
+        },
+        "__sozi_auto__": {
+          "link": false,
+          "referenceElementId": "",
+          "outlineElementId": "",
+          "transitionTimingFunction": "linear",
+          "transitionRelativeZoom": 0,
+          "transitionPathId": ""
+        }
+      },
+      "cameraStates": {
+        "mask": {
+          "cx": -230.8799484758963,
+          "cy": 82.17198581937357,
+          "width": 355.6792506753837,
+          "height": 222.36462670335115,
+          "opacity": 1,
+          "angle": 0,
+          "clipped": false,
+          "clipXOffset": 0,
+          "clipYOffset": 0,
+          "clipWidthFactor": 1,
+          "clipHeightFactor": 1
+        },
+        "__sozi_auto__": {
+          "cx": 2210.3524852585174,
+          "cy": 84.11061115686577,
+          "width": 338.8413359289161,
+          "height": 211.83784837722868,
+          "opacity": 1,
+          "angle": 0,
+          "clipped": false,
+          "clipXOffset": 0,
+          "clipYOffset": 0,
+          "clipWidthFactor": 1.0002928257686676,
+          "clipHeightFactor": 1
+        }
+      },
+      "cameraOffsets": {}
+    },
+    {
       "frameId": "SSR",
       "title": "SSR",
       "titleLevel": 0,
@@ -2444,7 +2502,7 @@
           "clipHeightFactor": 1
         },
         "__sozi_auto__": {
-          "cx": 2210.3524852585174,
+          "cx": 2260.3524852585174,
           "cy": 84.11061115686577,
           "width": 338.8413359289161,
           "height": 211.83784837722868,
@@ -2502,7 +2560,7 @@
           "clipHeightFactor": 1
         },
         "__sozi_auto__": {
-          "cx": 2260.3524852585174,
+          "cx": 2310.3524852585174,
           "cy": 84.11061115686577,
           "width": 338.8413359289161,
           "height": 211.83784837722868,
@@ -2560,7 +2618,7 @@
           "clipHeightFactor": 1
         },
         "__sozi_auto__": {
-          "cx": 2310.3524852585174,
+          "cx": 2360.3524852585174,
           "cy": 84.11061115686577,
           "width": 338.8413359289161,
           "height": 211.83784837722868,
@@ -2618,7 +2676,7 @@
           "clipHeightFactor": 1
         },
         "__sozi_auto__": {
-          "cx": 2360.3524852585174,
+          "cx": 2410.3524852585174,
           "cy": 84.11061115686577,
           "width": 338.8413359289161,
           "height": 211.83784837722868,
@@ -2676,7 +2734,7 @@
           "clipHeightFactor": 1
         },
         "__sozi_auto__": {
-          "cx": 2410.3524852585174,
+          "cx": 2460.3524852585174,
           "cy": 84.11061115686577,
           "width": 338.8413359289161,
           "height": 211.83784837722868,
@@ -2734,7 +2792,7 @@
           "clipHeightFactor": 1
         },
         "__sozi_auto__": {
-          "cx": 2460.3524852585174,
+          "cx": 2510.3524852585174,
           "cy": 84.11061115686577,
           "width": 338.8413359289161,
           "height": 211.83784837722868,
@@ -2792,7 +2850,7 @@
           "clipHeightFactor": 1
         },
         "__sozi_auto__": {
-          "cx": 2510.3524852585174,
+          "cx": 2560.3524852585174,
           "cy": 84.11061115686577,
           "width": 338.8413359289161,
           "height": 211.83784837722868,
@@ -2850,7 +2908,7 @@
           "clipHeightFactor": 1
         },
         "__sozi_auto__": {
-          "cx": 2560.3524852585174,
+          "cx": 2610.3524852585174,
           "cy": 84.11061115686577,
           "width": 338.8413359289161,
           "height": 211.83784837722868,
@@ -2908,7 +2966,7 @@
           "clipHeightFactor": 1
         },
         "__sozi_auto__": {
-          "cx": 2610.3524852585174,
+          "cx": 2660.3524852585174,
           "cy": 84.11061115686577,
           "width": 338.8413359289161,
           "height": 211.83784837722868,
@@ -2966,7 +3024,7 @@
           "clipHeightFactor": 1
         },
         "__sozi_auto__": {
-          "cx": 2660.3524852585174,
+          "cx": 2710.3524852585174,
           "cy": 84.11061115686577,
           "width": 338.8413359289161,
           "height": 211.83784837722868,
@@ -3024,7 +3082,7 @@
           "clipHeightFactor": 1
         },
         "__sozi_auto__": {
-          "cx": 2710.3524852585174,
+          "cx": 2760.3524852585174,
           "cy": 84.11061115686577,
           "width": 338.8413359289161,
           "height": 211.83784837722868,
@@ -3043,7 +3101,7 @@
   "elementsToHide": [],
   "customFiles": [],
   "selectedFrames": [
-    "Typescript"
+    "2024"
   ],
   "selectedLayers": [
     "mask",
