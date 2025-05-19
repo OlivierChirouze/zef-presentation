@@ -1009,6 +1009,30 @@ For example, to get statistics on the sessions from a specific rider, I can simp
                     ...I love it ❤️
                 </h2>
             </section>
+            <section data-auto-animate>
+                <h1>MongoDB</h1>
+                <ul>
+                    <li class="fragment">Build JSON queries with code
+                        <aside class="notes" data-markdown>
+jokes aside, what I like is to build the queries dynamically
+                        </aside>
+                    </li>
+                    <li class="fragment">... type safe queries
+                        <aside class="notes" data-markdown>
+with type checking
+                        </aside>
+                    </li>
+                </ul>
+                <pre class="fragment">
+                    <code data-trim class="language-typescript" data-line-numbers="5|1-4|2|3">
+                        function selectBySpotId(spotDayId: Id): { [p: string]: string } {
+                            const local_spotDayId: keyof Booking = 'spotDayId';
+                            return { [local_spotDayId]: spotDayId };
+                        }
+                        return Bookings.find(selectBySpotId(spotDayId));
+                    </code>
+                </pre>
+            </section>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- MeteorJS -->
