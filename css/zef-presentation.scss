@@ -9,3 +9,22 @@
 .col{
 	flex: 1;
 }
+
+#fake-love.fragment.visible:not(.current-fragment) {
+	animation: removed-item-animation 1s ease-in-out;
+  text-decoration: line-through;
+}
+
+#fake-love.fragment.visible.current-fragment {
+  text-decoration: none;
+}
+
+@keyframes removed-item-animation {
+	from {
+		text-decoration: none;
+	}
+
+	to {
+		text-decoration: line-through;
+	}
+}
