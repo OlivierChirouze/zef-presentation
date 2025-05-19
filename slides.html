@@ -828,32 +828,187 @@ I look at **Ionic**
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- MongoDb -->
-        <section id="MongoDb">
-            <aside class="notes" data-markdown>
+        <section>
+            <section id="MongoDb" data-auto-animate>
+                <aside class="notes" data-markdown>
 - at my current job I discover noSQL database
 - and more specifically MongoDb
-            </aside>
-            <h1>MongoDB</h1>
-            <ul>
-                <li class="fragment"><strong>document</strong> database
-                    <aside class="notes" data-markdown>
+                </aside>
+                <h1>MongoDB</h1>
+                <ul>
+                    <li class="fragment"><strong>document</strong> database
+                        <aside class="notes" data-markdown>
 - Stores data as flexible JSON-like documents.
-                    </aside>
-                </li>
-                <li class="fragment">Scalable and distributed
-                    <aside class="notes" data-markdown>
+                        </aside>
+                    </li>
+                    <li class="fragment">Scalable and distributed
+                        <aside class="notes" data-markdown>
 - Designed to scale out across servers easily.
-                    </aside>
-                </li>
-                <li class="fragment">Dynamic schemas
-                    <aside class="notes" data-markdown>
+                        </aside>
+                    </li>
+                    <li class="fragment">Dynamic schemas
+                        <aside class="notes" data-markdown>
 - Adjust structure without downtime or migrations.
-                    </aside>
-                </li>
-            </ul>
-            <h2 class="fragment">
-                ...I love it ❤️
-            </h2>
+                        </aside>
+                    </li>
+                </ul>
+            </section>
+            <section data-auto-animate>
+                <h1>MongoDB</h1>
+                <aside class="notes" data-markdown>
+For example, to get statistics on the sessions from a specific rider, I can simply do:
+- get spot day for all sessions
+- for sessions from this rider
+- group by day and spot
+- for each day and spot, get
+    - the max speed
+    - the sum of time spent on the water
+- do more complicated stuff
+- and some more
+- and some more
+- split per year/month/day
+- then group again
+
+----
+
+- all that with a simple a clean query language
+                </aside>
+                <pre>
+                    <code data-trim class="language-json" data-line-numbers="2-12|14-16|19-23|24-26|27-29|30-41|45-54|55-71|81-86|87-92|93-98|118-127">
+                        [
+                          {
+                            "$lookup": {
+                              "from": "spotDays",
+                              "localField": "spotDayId",
+                              "foreignField": "_id",
+                              "as": "spotDay"
+                            }
+                          },
+                          {
+                            "$unwind": "$spotDay"
+                          },
+                          {
+                            "$match": {
+                              "riderId": "ghjvyKeWjxphtBeuy"
+                            }
+                          },
+                          {
+                            "$group": {
+                              "_id": {
+                                "dayInTz": "$dayInTz",
+                                "spotId": "$spotDay.spotId"
+                              },
+                              "maxSpeedKmPerH": {
+                                "$max": "$maxSpeedKmPerH"
+                              },
+                              "distanceKm": {
+                                "$sum": "$distanceKm"
+                              },
+                              "durationSec": {
+                                "$sum": {
+                                  "$divide": [
+                                    {
+                                      "$subtract": [
+                                        "$endDate",
+                                        "$startDate"
+                                      ]
+                                    },
+                                    1000
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "$project": {
+                              "dayInTz": "$_id.dayInTz",
+                              "dimensions.spotId": "$_id.spotId",
+                              "count": 1,
+                              "maxSpeedKmPerH": 1,
+                              "distanceKm": 1,
+                              "durationSec": 1
+                            }
+                          },
+                          {
+                            "$project": {
+                              "dayInTz": 1,
+                              "count": 1,
+                              "dimensions": 1,
+                              "activities": 1,
+                              "maxSpeedKmPerH": 1,
+                              "distanceKm": 1,
+                              "durationSec": 1,
+                              "daySplit": {
+                                "$split": [
+                                  "$dayInTz",
+                                  "/"
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "$project": {
+                              "dayInTz": 1,
+                              "count": 1,
+                              "dimensions": 1,
+                              "activities": 1,
+                              "maxSpeedKmPerH": 1,
+                              "distanceKm": 1,
+                              "durationSec": 1,
+                              "year": {
+                                "$arrayElemAt": [
+                                  "$daySplit",
+                                  0
+                                ]
+                              },
+                              "month": {
+                                "$arrayElemAt": [
+                                  "$daySplit",
+                                  1
+                                ]
+                              },
+                              "day": {
+                                "$arrayElemAt": [
+                                  "$daySplit",
+                                  2
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "$group": {
+                              "_id": "$dimensions",
+                              "count_count": {
+                                "$sum": 1
+                              },
+                              "count_maxSpeedKmPerH": {
+                                "$max": "$maxSpeedKmPerH"
+                              },
+                              "count_distanceKm": {
+                                "$sum": "$distanceKm"
+                              },
+                              "count_durationSec": {
+                                "$sum": "$durationSec"
+                              }
+                            }
+                          },
+                          {
+                            "$project": {
+                              "dimensions": "$_id",
+                              "count": "$count_count",
+                              "maxSpeedKmPerH": "$count_maxSpeedKmPerH",
+                              "distanceKm": "$count_distanceKm",
+                              "durationSec": "$count_durationSec",
+                              "_id": 0
+                            }
+                          }
+                        ]
+                    </code>
+                </pre>
+                <h2 class="fragment">
+                    ...I love it ❤️
+                </h2>
+            </section>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- MeteorJS -->
