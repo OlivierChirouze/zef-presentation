@@ -555,6 +555,11 @@ Fast forward almost 15 years.
                        limited interoperability & ecosystem
                    </li>
                </ul>
+
+
+                <h2 class="fragment">
+                    ...I don't even try it seriously 💔
+                </h2>
             </section>
 
         </section>
@@ -707,17 +712,10 @@ Fast forward almost 15 years.
 - makes it easy to build **dynamic** UI
                     </aside>
                 </li>
-                <li class="fragment">Based <strong>observables</strong> object from RxJs library
+                <li class="fragment">Based on <strong>observable</strong> object from RxJs library
 
                 </li>
             </ul>
-            </section>
-            <section data-auto-animate>
-                <h1>RxJs</h1>
-                <ul>
-                    <li class="fragment">powerful</li>
-                    <li class="fragment">complex</li>
-                </ul>
             </section>
             <section data-auto-animate>
                 <h1>RxJs</h1>
@@ -759,6 +757,10 @@ Fast forward almost 15 years.
             </section>
                 <section data-auto-animate>
                     <h1>RxJs</h1>
+                    <ul>
+                        <li class="fragment">powerful</li>
+                        <li class="fragment">complex</li>
+                    </ul>
             <h2 class="fragment" id="fake-love">
                 ...I love it ❤️
                 <aside class="notes" data-markdown>
@@ -774,17 +776,29 @@ Fast forward almost 15 years.
         </section>
 
 
-
         <!-- SECTION ------------------------------------------------------------------------------- Ionic -->
+        <section>
+            <section>
+            <div class="todo">share of traffic img</div>
+                <aside class="notes" data-markdown>
+- But the world has changed! most people use a smartphone nowadays
+- I look at tools to help me build a _responsive_ web site and a mobile app
+                </aside>
+            </section>
+
         <section id="Ionic">
-            <h1>Ionic</h1>
+
+            <h1 class="fragment">Ionic</h1>
+            <aside class="notes" data-markdown>
+I look at **Ionic**
+            </aside>
             <ul>
                 <li class="fragment">Hybrid mobile app framework
                     <aside class="notes" data-markdown>
 - Ionic lets you build mobile apps with web technologies.
                     </aside>
                 </li>
-                <li class="fragment">Reusable UI components
+                <li class="fragment">Reusable and platform-specific <a href="https://ionicframework.com/docs/api/radio#object-value-references" target="_top">UI components</a>
                     <aside class="notes" data-markdown>
 - Includes ready-made design elements for various platforms.
                     </aside>
@@ -795,6 +809,22 @@ Fast forward almost 15 years.
                     </aside>
                 </li>
             </ul>
+            <pre class="fragment">
+                <code data-trim class="language-typescript" data-line-numbers="1|4-8|10">
+                    import { Camera, CameraResultType } from '@capacitor/camera';
+
+                    const takePicture = async () => {
+                      const image = await Camera.getPhoto({
+                        quality: 90,
+                        allowEditing: true,
+                        resultType: CameraResultType.Uri
+                      });
+
+                      imageElement.src = image.webPath;
+                    };
+                </code>
+            </pre>
+        </section>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- MongoDb -->
