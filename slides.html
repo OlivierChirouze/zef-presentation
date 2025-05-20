@@ -34,10 +34,9 @@
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- intro -->
-        <section id="intro" data-hide-timeline>
+        <section id="intro" data-hide-timeline
+                 data-background-image="images/drone.png">
             <h1>👋 Hi!</h1>
-            <div class="todo">photo</div>
-            <div class="todo">Criteo logo</div>
             <aside class="notes" data-markdown>
 Hi, I'm Olivier
 - joined Criteo 6 years ago
@@ -48,32 +47,31 @@ Hi, I'm Olivier
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- survey -->
-        <section id="survey" data-hide-timeline>
-            <h1>📊 Quick poll</h1>
+        <section id="survey" data-hide-timeline class="futurise1">
+            <h1>Quick poll</h1>
             <ul>
                 <li class="fragment">
-                    <span class="todo">img coder</span>
-                    code
+                    🧑‍💻 code?
                     <aside class="notes" data-markdown>
 - Who does **code** regularly?
                     </aside>
                 </li>
                 <li class="fragment">
-                    <span class="todo">js</span>
-                    javascript
+                    <img src="images/logos/javascript.png" height="50" width="50" class="logo" alt="javascript"/>
+                    javascript?
                     <aside class="notes" data-markdown>
 - Who knows **javascript**?
                     </aside>
                 </li>
                 <li class="fragment">
-                    <span class="todo">img sport</span>
-                    sport
+                    🏃 sport?
                     <aside class="notes" data-markdown>
 - Who does **sport** regularly?
                     </aside>
                 </li>
                 <li class="fragment">
-                    <span class="todo">logo</span> <a href="https://www.strava.com/features?hl=en-US" target="_top">Strava</a>
+                    <a href="https://www.strava.com/features?hl=en-US" target="_top">
+                        <img src="images/logos/strava.png" height="56" width="255" class="logo"/></a>?
                     <aside class="notes" data-markdown>
 - Who's a user of Strava?
     - Don't know what is Strava?
@@ -82,8 +80,7 @@ Hi, I'm Olivier
                     </aside>
                 </li>
                 <li class="fragment">
-                    <span class="todo">img coder at night</span>
-                    pet project
+                    🐶 pet project?
                     <aside class="notes" data-markdown>
 - Who has or had a pet project?
     - Don't know what pet project is?
@@ -100,57 +97,65 @@ Hi, I'm Olivier
 A little bit more about me and we'll move to more interesting stuff
             </aside>
 
-            <div class="todo">
-                AI generated images of sports:
-                (use r-stack")
-                <ul>
-                    <li class="fragment">
-                        hiking
-                        <aside class="notes" data-markdown>
-- hiking
-                        </aside>
-                    </li>
-                    <li class="fragment">
-                        rock climbing
-                        <aside class="notes" data-markdown>
-- rock climbing
-                        </aside>
-                    </li>
-                    <li class="fragment">
-                        mountain biking
-                        <aside class="notes" data-markdown>
-- mountain biking
-                        </aside>
-                    </li>
-                    <li class="fragment">
-                        snowboarding
-                        <aside class="notes" data-markdown>
-- snowboarding
-                        </aside>
-                    </li>
-                    <li class="fragment">
-                        windsurfing
-                        <aside class="notes" data-markdown>
-- windsurfing
-                        </aside>
-                    </li>
-                    <li class="fragment">
-                        wind foiling
-                        <aside class="notes" data-markdown>
-- wind foiling
-                        </aside>
-                    </li>
-                    <li class="fragment">
-                        wing
-                        <aside class="notes" data-markdown>
-- wing
-                        </aside>
-                    </li>
-                </ul>
-            </div>
+            <div class="r-stack">
+                <div class="fragment">
+                    <img src="images/sports/generated/hiking.jpg"/>
+                </div>
+                <div class="fragment">
+                    <img src="images/sports/generated/climbing.jpg"/>
+                </div>
+                <div class="fragment">
+                    <img src="images/sports/generated/mountain-bike.jpg"/>
+                </div>
+                <div class="fragment">
+                    <img src="images/sports/generated/snowboarding.jpg"/>
+                    <aside class="notes" data-markdown>
+- as you might guess these pictures have been generated by AI
+- I tried to do the same for the other sports I practice, but it kind of failed
+                    </aside>
+                </div>
 
-            <div class="todo fragment">
-                ✅ generative AI used
+
+                <div class="fragment">
+                    <img src="images/sports/generated/fails/astronaut.jpg"/>
+                </div>
+                <div class="fragment">
+                    <img src="images/sports/generated/fails/double-board.jpg"/>
+                </div>
+                <div class="fragment">
+                    <img src="images/sports/generated/fails/size-doesnt-matter.jpg"/>
+                    <aside class="notes" data-markdown>
+- so I used my own pictures instead
+                    </aside>
+                </div>
+
+
+
+                <div class="fragment">
+                    <img src="images/sports/me/windsurf.png"/>
+                </div>
+                <div class="fragment">
+                    <img src="images/sports/me/windsurf2.jpeg"/>
+                </div>
+
+
+                <div class="fragment">
+                    <img src="images/sports/me/windfoil.JPG"/>
+                </div>
+                <div class="fragment">
+                    <img src="images/sports/me/windfoil2.jpeg"/>
+                </div>
+
+
+                <div class="fragment">
+                    <img src="images/sports/me/wingfoil.png"/>
+                </div>
+                <div class="fragment">
+                    <img src="images/sports/me/wingfoil-jump.png"/>
+                    <aside class="notes" data-markdown>
+- ok, slide generated by AI -> ✅ done
+                    </aside>
+                </div>
             </div>
         </section>
 
@@ -178,10 +183,7 @@ A little bit more about me and we'll move to more interesting stuff
 - I made it available on the _obvious platform to publish_ which is...?
     - **Sourceforge**, of course!
     - We are in **2002** and Github will be invented 6 years later 😅
-                </aside>
-                <div class="fragment todo">
-                    screenshots of XPWeb (use r-stack")
-                    <aside class="notes" data-markdown>
+
 - the tool allows to
   - create user stories
   - estimate them
@@ -190,15 +192,22 @@ A little bit more about me and we'll move to more interesting stuff
 ### ➡️ Click Sourceforge link
 - it's still available for download!
                     </aside>
-                </div>
             </section>
 
+            <section data-auto-animate data-hide-timeline>
+                <h1>First pet project</h1>
+                <img src="images/xpweb.jpg"  style="width: 80%"/></section>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- 2016 -->
         <section id="2016">
             <h1>⏱️ 2016</h1>
-            <div class="todo">MAP LYON</div>
+
+            <div class="r-stack">
+                <img class="fragment" src="images/maps/France.png" alt="France"/>
+                <img class="fragment" src="images/maps/Lyon-Grenoble.png" alt="Lyon Grenoble"/>
+            </div>
+
             <aside class="notes" data-markdown>
 Fast forward almost 15 years.
 
@@ -298,8 +307,16 @@ in 2016,
                             </li>
                         </ul>
                     </div>
-                    <div class="todo">Screenshots???</div>
                 </div>
+            </section>
+            <section data-auto-animate>
+                <h1>💡 the idea</h1>
+                <h2>demo!</h2>
+                <aside class="notes" data-markdown>
+- and I'm going to show you the destination right now, before we go through the journey
+
+## ➡️ Display device connection, launch app on mobile
+                </aside>
             </section>
         </section>
 
@@ -331,7 +348,7 @@ in 2016,
 
         <!-- SECTION ------------------------------------------------------------------------------- Play framework -->
         <section id="Play framework">
-            <h1><span class="todo">logo</span>Play framework</h1>
+            <h1><img src="images/logos/play-framework.png" height="162" width="311" class="logo" alt="play"/> framework</h1>
 
             <aside class="notes" data-markdown>
 - it's MVC (Model View Controller) backend framework
@@ -348,11 +365,11 @@ in 2016,
         <!-- SECTION ------------------------------------------------------------------------------- Scala -->
         <section>
             <section id="scala" data-auto-animate>
-                <h1><span class="todo">logo</span>Scala</h1>
+                <h1><img src="images/logos/scala.png" height="152" width="332" class="logo" alt="scala"/></h1>
             </section>
 
             <section data-auto-animate>
-                <h1><span class="todo">logo</span>Scala</h1>
+                <h1><img src="images/logos/scala.png" height="152" width="332" class="logo" alt="scala"/></h1>
 
                 <aside class="notes" data-markdown>
 - Scala is a programming language
@@ -381,7 +398,7 @@ in 2016,
             </section>
 
             <section data-auto-animate>
-                <h1><span class="todo">logo</span>Scala</h1>
+                <h1><img src="images/logos/scala.png" height="152" width="332" class="logo" alt="scala"/></h1>
 
                 <aside class="notes" data-markdown>
 - to sum-up
@@ -418,7 +435,7 @@ in 2016,
 
         <!-- SECTION ------------------------------------------------------------------------------- Spark -->
         <section id="Spark">
-            <h1><span class="todo">logo</span> Spark</h1>
+            <h1><img src="images/logos/spark.svg" alt="spark" class="img-text"/></h1>
             <aside class="notes" data-markdown>
 - we start using Spark, a big data processing framework
 - I'm the only one in the team who knows Scala so I'm responsible for setting it up
@@ -440,7 +457,7 @@ in 2016,
 
         <!-- SECTION ------------------------------------------------------------------------------- Scala.io conf -->
         <section id="Scala.io conf">
-            <h1><span class="todo">logo</span> Scala.io conf</h1>
+            <h1><img src="images/logos/scalaio.png" alt="scala.io" class="img-text"/></h1>
             <aside class="notes" data-markdown>
 - I like Scala so much that I go to Scala.io conference
 - Actually, I go there 3 times in total!
@@ -473,7 +490,7 @@ in 2016,
 
         <section>
             <section data-auto-animate>
-                <h1 class="inline">js</h1>
+                <h1 class="inline"><img src="images/logos/javascript.png" height="80" width="80" class="logo" alt="js"/> Javascript</h1>
                 <aside class="notes" data-markdown>
 - With Scala I manage to:
   - download, parse and interpret weather forecast
@@ -504,13 +521,14 @@ in 2016,
             </section>
 
             <section data-auto-animate>
-                <h1>scala.</h1>
-                <h1>js</h1>
+                <h1 class="inline">Scala.</h1>
+                <h1 class="inline"><img src="images/logos/javascript.png" height="80" width="80" class="logo" alt="js"/></h1>
             </section>
 
 
             <section data-auto-animate id="ScalaJs">
-                <h1>scala.js</h1>
+                <h1 class="inline">Scala.</h1>
+                <h1 class="inline"><img src="images/logos/javascript.png" height="80" width="80" class="logo" alt="js"/></h1>
                 <ul>
                     <li class="fragment">Scala code for frontend app
                         <aside class="notes" data-markdown>
@@ -551,7 +569,9 @@ in 2016,
             </section>
 
             <section data-auto-animate>
-                <h1>scala.js</h1>
+                <h1 class="inline">Scala.</h1>
+                <h1 class="inline"><img src="images/logos/javascript.png" height="80" width="80" class="logo" alt="js"/></h1>
+
                 <aside class="notes" data-markdown>
 - but this happens to quite strong limitations
 - so I'll need something more standard...
@@ -582,7 +602,7 @@ in 2016,
         <!-- SECTION ------------------------------------------------------------------------------- Typescript -->
         <section>
             <section id="Typescript" data-auto-animate>
-                <h1>TypeScript</h1>
+                <h1><img src="images/logos/typescript.png" height="80" width="80" class="logo" alt="typescript"/> TypeScript</h1>
                 <aside class="notes" data-markdown>
 - Of course I look at **TypeScript**
                 </aside>
@@ -611,6 +631,7 @@ in 2016,
             </section>
 
             <section data-auto-animate>
+                <h1 class="inline"><img src="images/logos/javascript.png" height="80" width="80" class="logo" alt="js"/> Javascript</h1>
                 <pre data-id="code-block">
                     <code data-trim class="language-javascript" data-line-numbers>
                         function add(a, b) {
@@ -626,6 +647,7 @@ in 2016,
                 </pre>
             </section>
             <section data-auto-animate>
+                <h1><img src="images/logos/typescript.png" height="80" width="80" class="logo" alt="typescript"/> TypeScript</h1>
                 <pre data-id="code-block">
                     <code data-trim class="language-javascript" data-line-numbers>
                         function add(a: number, b: number): number {
@@ -636,11 +658,12 @@ in 2016,
                         console.log(add("5", 10)); // "510" 😱
                     </code>
                 <aside class="notes" data-markdown>
-- remember the javascript code?
+- here's the adapted Typescript code
                 </aside>
                 </pre>
             </section>
             <section data-auto-animate>
+                <h1><img src="images/logos/typescript.png" height="80" width="80" class="logo" alt="typescript"/> TypeScript</h1>
                 <pre data-id="code-block">
                     <code data-trim class="language-typescript" data-line-numbers>
                         function add(a: number, b: number): number {
@@ -657,7 +680,7 @@ in 2016,
             </section>
 
             <section>
-                <h1>Typescript</h1>
+                <h1><img src="images/logos/typescript.png" height="80" width="80" class="logo" alt="typescript"/> TypeScript</h1>
                 <aside class="notes" data-markdown>
 - Typescript typing system is great improves continuously
 ---
@@ -679,7 +702,8 @@ in 2016,
                                 <a href="https://github.com/microsoft/TypeScript/issues/14833" target="_top">Turing-complete</a>
                             </li>
                             <li class="fragment">
-                                runs <a href="https://www.youtube.com/watch?v=0mCsluv5FXA" target="_top">Doom</a>
+                                runs <a href="https://www.youtube.com/watch?v=0mCsluv5FXA" target="_top">
+                                <img src="images/logos/doom.png" class="img-text logo" alt="doom"/></a>
                             </li>
                         </ul>
                     </li>
@@ -705,7 +729,7 @@ in 2016,
         <!-- SECTION ------------------------------------------------------------------------------- Angular -->
         <section>
         <section id="Angular">
-            <h1>Angular</h1>
+            <h1><img src="images/logos/angular-js.png" height="90" width="90" class="logo" alt="logo"/> Angular</h1>
             <aside class="notes" data-markdown>
 - for the first time I will learn a pure **frontend framework** to build modern web apps
             </aside>
@@ -722,13 +746,13 @@ in 2016,
 - makes it easy to build **dynamic** UI
                     </aside>
                 </li>
-                <li class="fragment">Based on <strong>observable</strong> object from RxJs library
+                <li class="fragment">Based on <strong>observable</strong> object from <img src="images/logos/rxjs.svg" class="logo" height="50" width="50" alt="rxjs"/>RxJs library
 
                 </li>
             </ul>
             </section>
             <section data-auto-animate>
-                <h1>RxJs</h1>
+                <h1><img src="images/logos/rxjs.svg" alt="rxjs" class="logo" height="80" width="80"/> RxJs</h1>
                 <pre class="fragment">
                 <code data-trim class="language-typescript" data-line-numbers="1-3|5|6|7-8|9-10|11-12|15|16-21|22-26|28-31">
                     const query = this.auth.loggedRider$.pipe(
@@ -766,7 +790,7 @@ in 2016,
             </pre>
             </section>
                 <section data-auto-animate>
-                    <h1>RxJs</h1>
+                    <h1><img src="images/logos/rxjs.svg" alt="rxjs" class="logo" height="80" width="80"/> RxJs</h1>
                     <ul>
                         <li class="fragment">powerful</li>
                         <li class="fragment">complex</li>
@@ -789,7 +813,7 @@ in 2016,
         <!-- SECTION ------------------------------------------------------------------------------- Ionic -->
         <section>
             <section>
-            <div class="todo">share of traffic img</div>
+                <img src="images/ionic/mobile-desktop.webp" alt="mobile versus desktop share of traffic"/>
                 <aside class="notes" data-markdown>
 - But the world has changed! most people use a smartphone nowadays
 - I look at tools to help me build a _responsive_ web site and a mobile app
@@ -798,7 +822,7 @@ in 2016,
 
         <section id="Ionic">
 
-            <h1 class="fragment">Ionic</h1>
+            <h1 class="fragment"><img src="images/logos/ionic-text.png" class="logo img-text" alt="ionic"/></h1>
             <aside class="notes" data-markdown>
 I look at **Ionic**
             </aside>
@@ -842,11 +866,11 @@ I look at **Ionic**
         <!-- SECTION ------------------------------------------------------------------------------- MongoDb -->
         <section>
             <section id="MongoDb" data-auto-animate>
+                <h1><img src="images/logos/mongo-db.jpg" class="logo img-text" alt="mongo"/></h1>
                 <aside class="notes" data-markdown>
 - at my current job I discover noSQL database
 - and more specifically MongoDb
                 </aside>
-                <h1>MongoDB</h1>
                 <ul>
                     <li class="fragment"><strong>document</strong> database
                         <aside class="notes" data-markdown>
@@ -866,7 +890,7 @@ I look at **Ionic**
                 </ul>
             </section>
             <section data-auto-animate>
-                <h1>MongoDB</h1>
+                <h1><img src="images/logos/mongo-db.jpg" class="logo img-text" alt="mongo"/></h1>
                 <aside class="notes" data-markdown>
 For example, to get statistics on the sessions from a specific rider, I can simply do:
 - get spot day for all sessions
@@ -1022,7 +1046,7 @@ For example, to get statistics on the sessions from a specific rider, I can simp
                 </h2>
             </section>
             <section data-auto-animate>
-                <h1>MongoDB</h1>
+                <h1><img src="images/logos/mongo-db.jpg" class="logo img-text" alt="mongo"/></h1>
                 <ul>
                     <li class="fragment">Build JSON queries with code
                         <aside class="notes" data-markdown>
@@ -1053,7 +1077,7 @@ with type checking
                 <aside class="notes" data-markdown>
 - Now that I know MongoDb and chose my Javascript frontend framework, I look at a backend javascript framework
                 </aside>
-                <h1>MeteorJS</h1>
+                <h1><img src="images/logos/meteor-js.svg" alt="meteor"/></h1>
                 <ul>
                     <li class="fragment">Full-stack JavaScript platform
                         <aside class="notes" data-markdown>
@@ -1073,31 +1097,35 @@ with type checking
                 </ul>
             </section>
             <section data-auto-animate>
-                <h1>MeteorJS</h1>
+                <h1><img src="images/logos/meteor-js.svg" alt="meteor"/></h1>
                 <ul>
                     <li class="fragment">Specific frontend framework: Blaze
                         <aside class="notes" data-markdown>
                         </aside>
                     </li>
-                    <li class="fragment">Also supports <span class="todo">logo</span> React & <span class="todo">logo</span> Angular
+                    <li class="fragment">Also supports <img src="images/logos/react.svg" height="50" width="50" alt="react" class="logo"/> React &
+                        <img src="images/logos/angular-js.png" height="50" width="50" alt="angular" class="logo"/> Angular
                         <aside class="notes" data-markdown>
 - and later, VueJs
                         </aside>
                     </li>
                 </ul>
 
-                <div class="fragment todo">techstack switch
+                <div class="r-stack">
                     <aside class="notes" data-markdown>
 - I decide to give it a go
 - and throw away my scala project
 
 - but this will come with a cost!
                     </aside>
+                    <img src="images/meteor/tech-stack-switch-1.png" class="fragment" alt="tech switch"/>
+                    <img src="images/meteor/tech-stack-switch-2.png" class="fragment" alt="tech switch"/>
+                    <img src="images/meteor/tech-stack-switch-3.png" class="fragment" alt="tech switch"/>
                 </div>
             </section>
 
             <section data-auto-animate>
-                <h1>MeteorJS</h1>
+                <h1><img src="images/logos/meteor-js.svg" alt="meteor" class="logo img-text"/></h1>
                 <ul>
                     <li class="fragment">reactive?
                         <aside class="notes" data-markdown>
@@ -1125,9 +1153,13 @@ Now we are in 2018 and on the personal side, something major happens.
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- dev @ Criteo -->
-        <section id="dev @ Criteo">
-            <h1><span class="todo">CRITEO LOGO</span></h1>
-            <aside class="notes" data-markdown>
+        <section>
+            <section id="dev @ Criteo">
+                <h1><img data-id="criteo" src="images/logos/criteo.svg" alt="Criteo"/></h1>
+            </section>
+            <section>
+                <h1><img data-id="criteo" src="images/logos/criteo.svg" alt="Criteo" class="logo img-text"/></h1>
+                <aside class="notes" data-markdown>
 I join Criteo as a developer in Grenoble, which will be the best move in my career!
 
 ## ➡️ switch to timeline, zoom out
@@ -1136,15 +1168,14 @@ I join Criteo as a developer in Grenoble, which will be the best move in my care
 - so in a way, I'm here because of my pet project
 
 ## ➡️ switch back to slides
-            </aside>
-            <div class="todo">France
-                <aside class="notes" data-markdown>
+
 - this also means I'll have to move with my family
 - remember I'm leaving in Lyon
 - we rent a house between Lyon and Grenoble
                 </aside>
-            </div>
-            <div class="todo">image Lyon Grenoble</div>
+                <img class="fragment" src="images/maps/Lyon-Grenoble.png" alt="Lyon Grenoble"/>
+
+            </section>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- 🏡 rent a house -->
@@ -1175,7 +1206,9 @@ The beginning of a "productive collaboration" as
 
 ...for example...
             </aside>
-            <div class="todo">screenshot: cgrowth</div>
+
+            <img src="images/criteo/cgrowth-ui.png" alt="CGrowth UI"/>
+
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- 2020 -->
@@ -1186,7 +1219,7 @@ The beginning of a "productive collaboration" as
 
         <!-- SECTION ------------------------------------------------------------------------------- Leaflet -->
         <section id="Leaflet">
-            <h1>Leaflet</h1>
+            <h1><img src="images/logos/leaflet.svg" alt="leaflet" class="logo img-text"/></h1>
             <aside class="notes" data-markdown>
 For example:
 
@@ -1195,14 +1228,16 @@ For example:
   - describing spots
   - tracking sessions
             </aside>
-            <div class="todo">screenshot: spot</div>
-            <div class="todo">screenshot: session</div>
-
-            <div class="todo">screenshot: geoloc audiences
+            <div class="r-stack">
                 <aside class="notes" data-markdown>
 - I use this knowledge to implement geolocated audiences in CGrowthUI
                 </aside>
+                <img src="images/petole-screenshots/maps/spots-map-animated.gif" class="fragment" alt="spots map"/>
+                <img src="images/petole-screenshots/maps/spot-map.png" class="fragment" alt="spot map"/>
+                <img src="images/petole-screenshots/maps/session-map.png" class="fragment" alt="session map"/>
+                <img src="images/criteo/location-audiences.png" class="fragment" alt="geoloc audiences"/>
             </div>
+
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- Geoloc audiences -->
@@ -1217,7 +1252,7 @@ For example:
 - I introduce "skeleton" (loading) elements in CGrowth UI
   - after I used it in my project
             </aside>
-            <div class="todo">video: loading</div>
+            <img src="images/petole-screenshots/loading.gif" alt="loading"/>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- 2021 -->
@@ -1242,7 +1277,7 @@ For example:
 
         <!-- SECTION ------------------------------------------------------------------------------- github actions -->
         <section id="github actions">
-            <h1>GitHub Actions</h1>
+            <h1><img src="images/logos/github.png" alt="github" class="logo img-text"/>GitHub Actions</h1>
             <aside class="notes" data-markdown>
 - on my pet project (which is also hosted on GitHub) I use GitHub Actions
             </aside>
@@ -1300,7 +1335,7 @@ For example:
         <!-- SECTION ------------------------------------------------------------------------------- data validation - strong typing -->
         <section>
             <section id="data validation - strong typing" data-auto-animate>
-                <h1>data validation with Meteor</h1>
+                <h1><img src="images/logos/meteor-js.svg" alt="meteor" class="logo img-text"/> validation</h1>
 
                 <ul>
                     <li class="fragment">Shared data model
@@ -1343,8 +1378,9 @@ For example:
                 </pre>
             </section>
             <section data-auto-animate>
-                <h1>data validation with Meteor</h1>
-                <h2>demo</h2>
+                <h1><img src="images/logos/meteor-js.svg" alt="meteor" class="logo img-text"/> validation</h1>
+                <ul>
+                    <li>demo
                 <ul>
                     <li class="fragment">
                         frontend
@@ -1356,9 +1392,6 @@ For example:
                     </li>
                     <li class="fragment">
                         backend
-                        <ul>
-                            <li><a href="example-board.json" target="_top">json</a></li>
-                        </ul>
                         <aside class="notes" data-markdown>
 2) Meteor shell
 - try to call backend
@@ -1370,6 +1403,24 @@ Meteor.call("createWindsurfBoard",  {"type": "board", "subType": "windsurfBoard"
                         </aside>
                     </li>
                 </ul>
+                    </li>
+                </ul>
+                <pre class="fragment">
+                    <code data-trim class="language-json">
+                        {
+                          "type": "board",
+                          "subType": "windsurfBoard",
+                          "brandId": "c6XCpciKW89vmSYdW",
+                          "name": "My Board",
+                          "year": 2023,
+                          "variants": [
+                            {
+                              "volumeL": 9
+                            }
+                          ]
+                        }
+                    </code>
+                </pre>
 
             </section>
 
@@ -1508,8 +1559,9 @@ for example transform this schema
             <section data-auto-animate>
                 <h1>schema-to-types</h1>
                 <div class="fragment">npm package: <a href="https://www.npmjs.com/package/schema-to-types" target="_top">schema-to-types</a></div>
-                <div class="fragment todo">weekly downloads
-                <aside class="notes" data-markdown>
+                <div class="fragment">
+                    <img src="images/schema-to-types/weekly.png" alt="weekly downloads"/>
+                    <aside class="notes" data-markdown>
 this is not an huge success
 
 ## ➡️ SWITCH TO TIMELINE
@@ -1594,7 +1646,11 @@ this is not an huge success
             <aside class="notes" data-markdown>
 - Searching for help, I decide to invest some money to get things done efficiently
             </aside>
-            <div class="todo fragment">forum screenshot
+            <div class="r-stack">
+
+                <img class="fragment" src="images/consultants/forum.png" alt="forum"/>
+                <img class="fragment" src="images/consultants/commit.png" alt="commit"/>
+
                 <aside class="notes" data-markdown>
 
 ## ➡️ SWITCH TO TIMELINE
@@ -1646,7 +1702,11 @@ this is not an huge success
             </section>
 
             <section data-auto-animate>
-                <h1 data-id="title">Need <div class="todo">JS logo</div><code>aPlaceToLive.js</code></h1>
+                <h1 data-id="title">Need <code>aPlaceToLive.<img src="images/logos/javascript.png" class="logo img-text" alt="js"/></code>!</h1>
+            </section>
+
+            <section data-auto-animate>
+                <h1 data-id="title"><code>aPlaceToLive.<img src="images/logos/javascript.png" class="logo img-text" alt="js"/></code></h1>
                 <aside class="notes" data-markdown>
 - so all I need is:
                 </aside>
@@ -1659,20 +1719,20 @@ this is not an huge success
                             <li class="fragment">commute to POIs</li>
                         </ul>
                     </li>
-                    <li class="fragment">meteorJs
-                        <aside class="notes" data-markdown="">meteorJs</aside>
+                    <li class="fragment"><img src="images/logos/meteor-js.svg" alt="meteor" class="logo img-text"/>
+                        <aside class="notes" data-markdown=""></aside>
                     </li>
-                    <li class="fragment">Ionic
-                        <aside class="notes" data-markdown="">Ionic</aside>
+                    <li class="fragment"><img src="images/logos/ionic-text.png" class="logo img-text" alt="ionic"/>
+                        <aside class="notes" data-markdown="">ionic</aside>
                     </li>
-                    <li class="fragment">Leaflet
-                        <aside class="notes" data-markdown="">Leaflet</aside>
+                    <li class="fragment"><img src="images/logos/leaflet.svg" alt="leaflet" class="logo img-text"/>
+                        <aside class="notes" data-markdown="">leaflet</aside>
                     </li>
                 </ul>
             </section>
 
             <section data-auto-animate>
-                <h1 data-id="title"><div class="todo">JS logo</div><code>aPlaceToLive.js</code></h1>
+                <h1 data-id="title"><code>aPlaceToLive.<img src="images/logos/javascript.png" class="logo img-text" alt="js"/></code></h1>
                 <h2>demo!</h2>
                 <aside class="notes" data-markdown>
 - open project website http://localhost:8100
@@ -1685,27 +1745,36 @@ this is not an huge success
 
 - in the end we go for this place (Saint Guillaume)
                 </aside>
-                <div class="fragment todo">picture of house 1
-                <aside class="notes" data-markdown>
-- which ends up being a pretty good choice
-                </aside>
-                </div>
-                <div class="fragment todo">picture of house 2</div>
             </section>
 
             <section data-auto-animate>
-                <h1 data-id="title"><div class="todo">JS logo</div><code>aPlaceToLive.js</code></h1>
+                <h1 data-id="title"><code>aPlaceToLive.<img src="images/logos/javascript.png" class="logo img-text" alt="js"/></code></h1>
+                <div class="r-stack">
+
+                    <img src="images/a-place-to-live/DepuisMonestier.jpg" alt="overview" class="fragment"/>
+
+                    <img src="images/a-place-to-live/SaintGuillaume.png" alt="house photos" class="fragment"/>
+
+                    <aside class="notes" data-markdown>
+                        - which ends up being a pretty good choice
+                    </aside>
+                </div>
+            </section>
+
+            <section data-auto-animate>
+                <h1 data-id="title"><code>aPlaceToLive.<img src="images/logos/javascript.png" class="logo img-text" alt="js"/></code></h1>
                 <h2>isochrones</h2>
                 <aside class="notes" data-markdown>
 - do you know what isochrones are?
                 </aside>
-                <div class="fragment todo">isochrone1
+
+                <div class="r-stack">
+
+                    <img src="images/a-place-to-live/isochrones1.png" class="fragment" alt="isochrone"/>
+                    <img src="images/a-place-to-live/isochrones2.png" class="fragment" alt="isochrone"/>
+
                     <aside class="notes" data-markdown>
 - from a point
-                    </aside>
-                </div>
-                <div class="fragment todo">isochrone2
-                    <aside class="notes" data-markdown>
 - it calculates areas of places that can be reached with a fixed time
  - for example here you can see places reachable from Grenoble office in:
   - 3 min (blue)
@@ -1732,7 +1801,7 @@ this is not an huge success
         <section>
 
             <section id="ImageKit" data-auto-animate>
-                <h1>ImageKit</h1>
+                <h1><img src="images/logos/imagekit.svg" alt="imagekit" class="logo img-text"/> <img src="images/logos/imagekit-text.png" alt="imagekit" class="logo img-text"/></h1>
                 <aside class="notes" data-markdown="">
 - to handle photos I rely on an cloud service called ImageKit
                 </aside>
@@ -1752,40 +1821,40 @@ Content Distribution Network
             </section>
 
             <section data-auto-animate>
-                <h1>ImageKit</h1>
+                <h1><img src="images/logos/imagekit.svg" alt="imagekit" class="logo img-text"/> <img src="images/logos/imagekit-text.png" alt="imagekit" class="logo img-text"/></h1>
                 <h2>transformations</h2>
                 <pre>
                     <code class="smallCode language-markdown" data-trim data-id="code">
                     https://ik.imagekit.io/zef/spots/fr/monteynard/GH010563_5_OEUSo7a6A.jpg</code>
                 </pre>
-                <div class="todo">img 1</div>
+                <img src="images/imagekit/imagekit1.png" alt="transformations"/>
             </section>
 
             <section data-auto-animate>
-                <h1>ImageKit</h1>
+                <h1><img src="images/logos/imagekit.svg" alt="imagekit" class="logo img-text"/> <img src="images/logos/imagekit-text.png" alt="imagekit" class="logo img-text"/></h1>
                 <h2>transformations</h2>
                 <pre>
                     <code class="smallCode language-markdown" data-trim data-id="code">
                     https://ik.imagekit.io/zef/spots/fr/monteynard/GH010563_5_OEUSo7a6A.jpg?tr=w-150,h-150</code>
                 </pre>
-                <div class="todo">img 2</div>
+                <img src="images/imagekit/imagekit2.webp" alt="transformations"/>
             </section>
 
             <section data-auto-animate>
-                <h1>ImageKit</h1>
+                <h1><img src="images/logos/imagekit.svg" alt="imagekit" class="logo img-text"/> <img src="images/logos/imagekit-text.png" alt="imagekit" class="logo img-text"/></h1>
                 <h2>transformations</h2>
                 <pre>
                     <code class="smallCode language-markdown" data-trim data-id="code">
                     https://ik.imagekit.io/zef/spots/fr/monteynard/GH010563_5_OEUSo7a6A.jpg?l-text,ie-KzE=,ox-0,oy-68,w-150,fs-50,co-FFFFFF,l-end</code>
                 </pre>
-                <div class="todo">img 3</div>
+                <img src="images/imagekit/imagekit3.webp" alt="transformations"/>
             </section>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- open graph -->
         <section>
             <section id="open graph" data-auto-animate>
-                <h1>open graph</h1>
+                <h1><img src="images/logos/open-graph.png" alt="open graph" class="logo img-text"/>open graph</h1>
                 <aside class="notes" data-markdown>
 - When I’m about to finally _reveal the website to the world_
   - I think I want to share nice links.
@@ -1800,7 +1869,7 @@ Content Distribution Network
             </section>
 
             <section data-auto-animate>
-                <h1>open graph</h1>
+                <h1><img src="images/logos/open-graph.png" alt="open graph" class="logo img-text"/>open graph</h1>
                 <aside class="notes" data-markdown>
 - turns out you need to implement the "open graph" protocol to return the relevant values
 
@@ -2032,6 +2101,15 @@ Content Distribution Network
 <script src="node_modules/reveal.js-menu/menu.js"></script>
 
 <script>
+
+    document.querySelectorAll("section.futurise1").forEach((section) => {
+        const imgUrl = "images/futurise/top-left.png";
+        section.setAttribute("data-background-image", imgUrl);
+        section.setAttribute("data-background-position", "top left");
+        section.setAttribute("data-background-size", "50%");
+        section.setAttribute("data-background-repeat", "no-repeat");
+    });
+
     // More info about initialization & config:
     // - https://revealjs.com/initialization/
     // - https://revealjs.com/config/

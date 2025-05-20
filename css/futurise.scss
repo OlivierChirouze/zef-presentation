@@ -24,3 +24,9 @@
 .reveal button.navigate-up.enabled {
 	color: #ff6505;
 }
+
+.reveal div.backgrounds > div.slide-background.custom-bg.present {
+	background-image: url("images/futurise/top-left.png") !important;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
