@@ -1834,8 +1834,37 @@ Content Distribution Network
 
         <!-- SECTION ------------------------------------------------------------------------------- server side rendering -->
         <section id="SSR">
-            <h1>server side rendering</h1>
-
+            <h1>server side rendering (SSR)</h1>
+            <ul>
+                <li class="fragment">main html headers
+                    <aside class="notes" data-markdown="">
+- but these tags must be generated as part of the main html page... so it needs to be sent by the backend
+                    </aside>
+                </li>
+                <li class="fragment">single page application = routing in frontend
+                    <aside class="notes" data-markdown="">
+- all routing is handled by Angular
+- meteor doesn't know about it
+                    </aside>
+                </li>
+                <li class="fragment">backend needs to know about routing
+                    <aside class="notes" data-markdown="">
+                    </aside>
+                </li>
+                <li class="fragment">✨ Server Side Rendering!
+                    <aside class="notes" data-markdown="">
+- you would usually rely on Angular SSR features
+  - but it's not supported on my version of Angular
+  - and upgrade is almost impossible with my Meteor version
+                    </aside>
+                    <ul>
+                        <li class="fragment">😭 but can't upgrade Angular
+                        </li>
+                        <li class="fragment">🎉 simple! implement my own SSR 🧠
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- Dev lead -->
