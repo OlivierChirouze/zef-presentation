@@ -10,12 +10,12 @@
 	flex: 1;
 }
 
-#fake-love.fragment.visible:not(.current-fragment) {
+.striked.fragment.visible:not(.current-fragment) {
 	animation: removed-item-animation 1s ease-in-out;
-  text-decoration: line-through;
+	text-decoration: line-through;
 }
 
-#fake-love.fragment.visible.current-fragment {
+.striked.fragment.visible.current-fragment {
   text-decoration: none;
 }
 
