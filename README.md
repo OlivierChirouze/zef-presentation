@@ -47,8 +47,9 @@ The talk is a slides presentation that can be navigated through via a "timeline"
 - for "schemas-to-types" project
   - [ ] 🧑‍💻 WebStorm: open project
 - for "A Place to Live" project
-  - [ ] 🧑‍💻 WebStorm: debug backend
-  - [ ] 🖥️ shell: start frontend
+  - [ ] 🧑‍💻 WebStorm: debug backend (`npm run api-meteor`)
+  - [ ] 🖥️ shell: start frontend: `npm run start`
+  - [ ] 🌐 Browser: open http://localhost:8100
 - For external services:
   - [ ] 🌐 open [ImageKit](https://imagekit.io/dashboard/media-library/L2dlYXIvZHVvdG9uZQ)
   - [ ] 🌐 open [Galaxy cloud](https://eu-west-1.galaxy.meteor.com/app/petole.eu.meteorapp.com/logs)
