@@ -39,6 +39,7 @@ The talk is a slides presentation that can be navigated through via a "timeline"
   - [ ] 🌐 Chrome: debug devices
   - [ ] 🌐 Browser: open http://localhost:8102/
     - [ ] 🌐 login
+    - [ ] open multiple instances on different pages, to avoid the demo effect
   - [ ] 🗃️ start Mongo client (ex: NoSQLBooster for MongoDB)
 - for "A Place to Live" project
   - [ ] 🧑‍💻 WebStorm: debug backend
