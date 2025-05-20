@@ -1613,20 +1613,107 @@ this is not an huge success
 - A few more hours complaining…
 - Then I simply give up and move on to something else
 
+## STAY on timeline
                 </aside>
             </div>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- waterspot-catalog -->
-        <section id="waterspot-catalog" data-visibility="hidden">
+        <section id="waterspot-catalog">
             <h1>waterspot-catalog</h1>
+
+            <aside class="notes" data-markdown>
+- to manage the gear catalog, I try to contact brands
+- they have nothing better than PDF
+- so I crawl their websites
+ - note: I implement something close to one of our **design interviews**
+- I open source the crawling and catalog
+  - nobody cares
+            </aside>
 
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- a-place-to-live -->
-        <section id="a-place-to-live">
-            <h1>a-place-to-live</h1>
+        <section>
+            <section id="a-place-to-live" data-auto-animate>
+                <h1 data-id="title">Need a place to live?</h1>
+                <aside class="notes" data-markdown>
+- On the personal side, it’s time for my family to look for the perfect place to live
+ - closer to Grenoble
 
+- we like to back our decisions with data, right?
+                </aside>
+            </section>
+
+            <section data-auto-animate>
+                <h1 data-id="title">Need <div class="todo">JS logo</div><code>aPlaceToLive.js</code></h1>
+                <aside class="notes" data-markdown>
+- so all I need is:
+                </aside>
+                <ul>
+                    <li class="fragment">open data
+                        <aside class="notes" data-markdown="">open data</aside>
+                        <ul>
+                            <li class="fragment">town density</li>
+                            <li class="fragment">proximity of school</li>
+                            <li class="fragment">commute to POIs</li>
+                        </ul>
+                    </li>
+                    <li class="fragment">meteorJs
+                        <aside class="notes" data-markdown="">meteorJs</aside>
+                    </li>
+                    <li class="fragment">Ionic
+                        <aside class="notes" data-markdown="">Ionic</aside>
+                    </li>
+                    <li class="fragment">Leaflet
+                        <aside class="notes" data-markdown="">Leaflet</aside>
+                    </li>
+                </ul>
+            </section>
+
+            <section data-auto-animate>
+                <h1 data-id="title"><div class="todo">JS logo</div><code>aPlaceToLive.js</code></h1>
+                <h2>demo!</h2>
+                <aside class="notes" data-markdown>
+- open project website http://localhost:8100
+- choose Trièves configuration
+- explain:
+  - different criterias
+  - weights -> can adjust
+  - all points are cities
+- click on a city
+
+- in the end we go for this place (Saint Guillaume)
+                </aside>
+                <div class="fragment todo">picture of house 1
+                <aside class="notes" data-markdown>
+- which ends up being a pretty good choice
+                </aside>
+                </div>
+                <div class="fragment todo">picture of house 2</div>
+            </section>
+
+            <section data-auto-animate>
+                <h1 data-id="title"><div class="todo">JS logo</div><code>aPlaceToLive.js</code></h1>
+                <h2>isochrones</h2>
+                <aside class="notes" data-markdown>
+- do you know what isochrones are?
+                </aside>
+                <div class="fragment todo">isochrone1
+                    <aside class="notes" data-markdown>
+- from a point
+                    </aside>
+                </div>
+                <div class="fragment todo">isochrone2
+                    <aside class="notes" data-markdown>
+- it calculates areas of places that can be reached with a fixed time
+ - for example here you can see places reachable from Grenoble office in:
+  - 3 min (blue)
+  - 6 min (green)
+  - etc, up to 30 min (red)
+                    </aside>
+                </div>
+            </section>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- 🏡 buy a house -->
@@ -1642,9 +1729,57 @@ this is not an huge success
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- server side rendering -->
-        <section id="ImageKit">
-            <h1>ImageKit</h1>
+        <section>
 
+            <section id="ImageKit" data-auto-animate>
+                <h1>ImageKit</h1>
+                <aside class="notes" data-markdown="">
+- to handle photos I rely on an cloud service called ImageKit
+                </aside>
+                <ul>
+                    <li class="fragment">cloud hosting
+                        <aside class="notes" data-markdown=""></aside>
+                    </li>
+                    <li class="fragment">cdn
+                        <aside class="notes" data-markdown="">
+Content Distribution Network
+                        </aside>
+                    </li>
+                    <li class="fragment">transformations
+                        <aside class="notes" data-markdown=""></aside>
+                    </li>
+                </ul>
+            </section>
+
+            <section data-auto-animate>
+                <h1>ImageKit</h1>
+                <h2>transformations</h2>
+                <pre>
+                    <code class="smallCode language-markdown" data-trim data-id="code">
+                    https://ik.imagekit.io/zef/spots/fr/monteynard/GH010563_5_OEUSo7a6A.jpg</code>
+                </pre>
+                <div class="todo">img 1</div>
+            </section>
+
+            <section data-auto-animate>
+                <h1>ImageKit</h1>
+                <h2>transformations</h2>
+                <pre>
+                    <code class="smallCode language-markdown" data-trim data-id="code">
+                    https://ik.imagekit.io/zef/spots/fr/monteynard/GH010563_5_OEUSo7a6A.jpg?tr=w-150,h-150</code>
+                </pre>
+                <div class="todo">img 2</div>
+            </section>
+
+            <section data-auto-animate>
+                <h1>ImageKit</h1>
+                <h2>transformations</h2>
+                <pre>
+                    <code class="smallCode language-markdown" data-trim data-id="code">
+                    https://ik.imagekit.io/zef/spots/fr/monteynard/GH010563_5_OEUSo7a6A.jpg?l-text,ie-KzE=,ox-0,oy-68,w-150,fs-50,co-FFFFFF,l-end</code>
+                </pre>
+                <div class="todo">img 3</div>
+            </section>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- open graph -->

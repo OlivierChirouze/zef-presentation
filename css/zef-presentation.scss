@@ -2,12 +2,12 @@
 	background-color: #65ff00 !important;
 }
 
-.container{
+.container {
 	display: flex;
 }
 
-.col{
-	flex: 1;
+.col {
+	flex: 0 0 50%;
 }
 
 .striked.fragment.visible:not(.current-fragment) {
@@ -27,4 +27,8 @@
 	to {
 		text-decoration: line-through;
 	}
+}
+
+.smallCode {
+	font-size: 0.5em;
 }
