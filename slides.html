@@ -1783,31 +1783,53 @@ Content Distribution Network
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- open graph -->
-        <section id="open graph">
-            <h1>open graph</h1>
-            <pre>
-                <code data-trim class="language-xml" data-line-numbers="1|3|5-9|10|12-16">
-                    <script type="text/template">
+        <section>
+            <section id="open graph" data-auto-animate>
+                <h1>open graph</h1>
+                <aside class="notes" data-markdown>
+- When I’m about to finally _reveal the website to the world_
+  - I think I want to share nice links.
+- Turns out you need to implement OpenGraph: a semi-standard to define the title, description and preview image as special headers.
+                </aside>
+
+                <div class="r-stack">
+                    <img class="fragment" src="images/open-graph/whatsapp.png"/>
+                    <img class="fragment" src="images/open-graph/slack.png"/>
+                </div>
+
+            </section>
+
+            <section data-auto-animate>
+                <h1>open graph</h1>
+                <aside class="notes" data-markdown>
+- turns out you need to implement the "open graph" protocol to return the relevant values
+
+- which not really as protocol, as there are special tags for Twitter, for example
+                </aside>
+                <pre>
+                    <code data-trim class="language-xml" data-line-numbers="1|3|5-9|10|12-16">
+                        <script type="text/template">
 <head>
 
-    <title>Duotone - Pétole</title>
+    <title>Monteynard 04/12/2025 - Pétole</title>
 
-    <meta property="og:title" content="Duotone">
-    <meta property="og:description" content="All info about Duotone and its gear catalog are on Pétole">
-    <meta property="og:url" content="https://www.petole.net/gear/duotone">
+    <meta property="og:title" content="Monteynard sam. 12/04/2025 : 16 nœuds SW, 21.4°C, une session">
+    <meta property="og:description" content="La page dédiée au spot Monteynard pour le sam. 12/04/2025 : prévisions météo mises à jour toutes les heures, sessions, observations live et commentaires sur une journée mémorable !">
+    <meta property="og:url" content="https://www.petole.net/spots/fr/monteynard/2025/04/12">
     <meta property="og:site_name" content="Pétole">
     <meta property="og:image:url"
-          content="https://ik.imagekit.io/zef/tr:n-ik_ml_thumbnail/gear/duotone/valve-autocollante-duotone-reparation-kitesurf-jpg">
+          content="https://ik.imagekit.io/zef/spots/fr/monteynard/olivier.chirouze-2025-04-12T22_04_13.086Z_l7YJjLMkI.jpeg">
 
-    <meta property="twitter:title" content="Duotone">
-    <meta property="twitter:description" content="All info about Duotone and its gear catalog are on Pétole">
+    <meta property="twitter:title" content="Monteynard sam. 12/04/2025 : 16 nœuds SW, 21.4°C, une session">
+    <meta property="twitter:description" content="La page dédiée au spot Monteynard pour le sam. 12/04/2025 : prévisions météo mises à jour toutes les heures, sessions, observations live et commentaires sur une journée mémorable !">
     <meta property="twitter:site" content="https://www.petole.net">
     <meta property="twitter:image"
-          content="https://ik.imagekit.io/zef/tr:n-ik_ml_thumbnail/gear/duotone/valve-autocollante-duotone-reparation-kitesurf-jpg">
+          content="https://ik.imagekit.io/zef/spots/fr/monteynard/olivier.chirouze-2025-04-12T22_04_13.086Z_l7YJjLMkI.jpeg">
 
-                </script>
-                </code>
-            </pre>
+                    </script>
+                    </code>
+                </pre>
+            </section>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- server side rendering -->
