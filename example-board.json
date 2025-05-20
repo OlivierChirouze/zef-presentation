@@ -1,0 +1,12 @@
+{
+  "type": "board",
+  "subType": "windsurfBoard",
+  "brandId": "c6XCpciKW89vmSYdW",
+  "name": "My Board",
+  "year": 2023,
+  "variants": [
+    {
+      "volumeL": 9
+    }
+  ]
+}

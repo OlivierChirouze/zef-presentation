@@ -39,8 +39,11 @@ The talk is a slides presentation that can be navigated through via a "timeline"
   - [ ] 🌐 Chrome: debug devices
   - [ ] 🌐 Browser: open http://localhost:8102/
     - [ ] 🌐 login
-    - [ ] open multiple instances on different pages, to avoid the demo effect
+    - [ ] open tab to create new gear http://localhost:8102/gear/windsurf-sails
+      - [ ] add gear
+      - [ ] choose board, windsurf board, brand name, name (but **not** year)
   - [ ] 🗃️ start Mongo client (ex: NoSQLBooster for MongoDB)
+  - [ ] 🖥️ shell: open `meteor shell`
 - for "A Place to Live" project
   - [ ] 🧑‍💻 WebStorm: debug backend
   - [ ] 🖥️ shell: start frontend

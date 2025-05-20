@@ -1198,7 +1198,11 @@ For example:
             <div class="todo">screenshot: spot</div>
             <div class="todo">screenshot: session</div>
 
-            <div class="todo">screenshot: geoloc audiences</div>
+            <div class="todo">screenshot: geoloc audiences
+                <aside class="notes" data-markdown>
+- I use this knowledge to implement geolocated audiences in CGrowthUI
+                </aside>
+            </div>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- Geoloc audiences -->
@@ -1222,39 +1226,154 @@ For example:
 
         </section>
 
-        <!-- SECTION ------------------------------------------------------------------------------- github actions -->
-        <section id="github actions">
-            <h1>GitHub Actions</h1>
-            <ul>
-                <li class="fragment">CI/CD built into GitHub
-                    <aside class="notes" data-markdown>
-- Automate tests and deployments on code changes.
-                    </aside>
-                </li>
-                <li class="fragment">Workflow-as-code
-                    <aside class="notes" data-markdown>
-- Define actions in YAML files in your repo.
-                    </aside>
-                </li>
-                <li class="fragment">Marketplace of actions
-                    <aside class="notes" data-markdown>
-- Reuse community-contributed steps and workflows.
-                    </aside>
-                </li>
-            </ul>
-        </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- OneKey -->
         <section id="OneKey">
-            <h1>OneKey</h1>
+            <h1><a href="https://github.com/OneKey-Network/addressability-framework" target="_top">OneKey</a></h1>
+            <aside class="notes" data-markdown>
+- in 2021 I change job at Criteo
+- and start working on an open source project called OneKey,
+  - that we publish on Github
+
+- ⚠️ I stop working on frontend
+            </aside>
+
+        </section>
+
+        <!-- SECTION ------------------------------------------------------------------------------- github actions -->
+        <section id="github actions">
+            <h1>GitHub Actions</h1>
+            <aside class="notes" data-markdown>
+- on my pet project (which is also hosted on GitHub) I use GitHub Actions
+            </aside>
+            <ul>
+                <li class="fragment">CI/CD built into GitHub
+                    <aside class="notes" data-markdown>
+- CI: Continuous Integration
+- CD: Continuous Delivery
+                    </aside>
+                </li>
+            </ul>
+
+            <pre class="fragment">
+                <aside class="notes" data-markdown>
+- it looks like this
+                </aside>
+                <code data-trim class="language-yaml" data-line-numbers="1-5|10-14|16-17|19-22|24-27|29-32">
+                    name: Deploy
+                        'on':
+                          push:
+                            branches:
+                              - master
+                        jobs:
+                          build_and_deploy:
+                            runs-on: ubuntu-latest
+                            steps:
+                              - name: CONFIG - setup node
+                                uses: actions/setup-node@v3
+                                with:
+                                  node-version: ".nvmrc"
+                                  cache: 'npm'
+
+                              - name: Install
+                                run: npm install
+
+                              - name: BACKEND - setup meteor
+                                uses: meteorengineer/setup-meteor@v1
+                                with:
+                                  meteor-release: "2.6.1"
+
+                              - name: FRONTEND - build
+                                run: |
+                                  npm run client:update-for-galaxy
+                                  npm run frontend:build
+
+                              - name: Deploy to Galaxy
+                                run: |
+                                  cd backend
+                                  npm run backend:deploy-github
+                </code>
+            </pre>
 
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- data validation - strong typing -->
-        <section id="data validation - strong typing">
-            <h1>data validation - strong typing</h1>
+        <section>
+            <section id="data validation - strong typing" data-auto-animate>
+                <h1>data validation / strong typing</h1>
 
-        </section>
+                <ul>
+                    <li class="fragment">Shared data model
+                        <aside class="notes" data-markdown>
+- In Meteor data model can be shared between client and server.
+                        </aside>
+                    </li>
+                    <li class="fragment">"simpl-schema"
+                        <aside class="notes" data-markdown>
+- format of messages can be defined in a "schema"
+                        </aside>
+                    </li>
+                </ul>
+                <pre class="fragment">
+                    <code data-trim class="language-typescript" data-line-numbers="2|3|4|5|6-10|11-15|17-21">
+                        const windsurfBoardSchema = {
+                          type: ProductType,
+                          subType: ProductSubType,
+                          brandId: String,
+                          name: String,
+                          year: {
+                            type: Number,
+                            min: 1970,
+                            max: new Date().getFullYear() + 1
+                          },
+                          //...
+                          variants: {
+                            type: Array,
+                            minCount: 1
+                          },
+                          'variants.$': {
+                            volumeL: {
+                              type: SimpleSchema.Integer, // No decimals for board volume in liters
+                              min: 10, // Here's the minimum
+                              max: 500
+                            }
+                          }
+                        };
+                    </code>
+                </pre>
+            </section>
+            <section data-auto-animate>
+                <h1>data validation / strong typing</h1>
+                <h2>demo</h2>
+                <ul>
+                    <li class="fragment">
+                        frontend
+                        <aside class="notes" data-markdown>
+1) **open app** in "add gear" page
+- no name -> alert is mandatory
+- try to add a board with volume of 9L -> minimum 10
+                        </aside>
+                    </li>
+                    <li class="fragment">
+                        backend
+                        <ul>
+                            <li><a href="example-board.json" target="_top">json</a></li>
+                        </ul>
+                        <aside class="notes" data-markdown>
+2) Meteor shell
+- try to call backend
+- open example-board.json, format it one liner
+```
+Meteor.call("createWindsurfBoard",  {"type": "board", "subType": "windsurfBoard", "brandId": "c6XCpciKW89vmSYdW", "name": "My Board", "year": 2023, "variants": [{"volumeL": 9}]})
+```
+- should get the same error
+                        </aside>
+                    </li>
+                </ul>
+
+            </section>
+
+            </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- schema-to-types -->
         <section id="schema-to-types">
