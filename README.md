@@ -44,6 +44,8 @@ The talk is a slides presentation that can be navigated through via a "timeline"
       - [ ] choose board, windsurf board, brand name, name (but **not** year)
   - [ ] 🗃️ start Mongo client (ex: NoSQLBooster for MongoDB)
   - [ ] 🖥️ shell: open `meteor shell`
+- for "schemas-to-types" project
+  - [ ] 🧑‍💻 WebStorm: open project
 - for "A Place to Live" project
   - [ ] 🧑‍💻 WebStorm: debug backend
   - [ ] 🖥️ shell: start frontend

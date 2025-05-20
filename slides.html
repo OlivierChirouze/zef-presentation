@@ -1300,7 +1300,7 @@ For example:
         <!-- SECTION ------------------------------------------------------------------------------- data validation - strong typing -->
         <section>
             <section id="data validation - strong typing" data-auto-animate>
-                <h1>data validation / strong typing</h1>
+                <h1>data validation with Meteor</h1>
 
                 <ul>
                     <li class="fragment">Shared data model
@@ -1308,7 +1308,7 @@ For example:
 - In Meteor data model can be shared between client and server.
                         </aside>
                     </li>
-                    <li class="fragment">"simpl-schema"
+                    <li class="fragment"><code>simpl-schema</code>
                         <aside class="notes" data-markdown>
 - format of messages can be defined in a "schema"
                         </aside>
@@ -1343,7 +1343,7 @@ For example:
                 </pre>
             </section>
             <section data-auto-animate>
-                <h1>data validation / strong typing</h1>
+                <h1>data validation with Meteor</h1>
                 <h2>demo</h2>
                 <ul>
                     <li class="fragment">
@@ -1376,41 +1376,249 @@ Meteor.call("createWindsurfBoard",  {"type": "board", "subType": "windsurfBoard"
             </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- schema-to-types -->
-        <section id="schema-to-types">
-            <h1>schema-to-types</h1>
+        <section>
+            <section id="schema-to-types" data-auto-animate>
+                <h1><code>schema-to-types</code></h1>
+                <ul>
+                    <li class="fragment">👎 runtime checks
+                        <aside class="notes" data-markdown>
+- but this is only a _runtime_ check
+                        </aside>
+                    </li>
+                    <li class="fragment">😥 no (simpl-schemas -> Typescript types) package?
+                        <aside class="notes" data-markdown>
+- because I'm maniac, I'd like to have strong typing everywhere
+                        </aside>
+                    </li>
+                    <li class="fragment">🧚 let's create it!
+                        <aside class="notes" data-markdown="">
+- no problem
+                        </aside>
+                    </li>
+                </ul>
+            </section>
+            <section data-auto-animate>
+                <h1>schema-to-types</h1>
 
+                <aside class="notes" data-markdown>
+for example transform this schema
+                </aside>
+
+                <div class="container">
+                    <div class="col fragment">
+                        <pre>
+                            <code data-trim class="language-typescript" data-line-numbers>
+                                const windsurfBoardSchema = {
+                                  type: ProductType,
+                                  subType: ProductSubType,
+                                  brandId: String,
+                                  name: String,
+                                  year: {
+                                    type: Number,
+                                    min: 1970,
+                                    max: new Date().getFullYear() + 1
+                                  },
+                                  //...
+                                  variants: {
+                                    type: Array,
+                                    minCount: 1
+                                  },
+                                  'variants.$': {
+                                    volumeL: {
+                                      type: SimpleSchema.Integer, // No decimals for board volume in liters
+                                      min: 10, // Here's the minimum
+                                      max: 500
+                                    }
+                                  }
+                                };
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+
+            </section>
+            <section data-auto-animate>
+                <h1>schema-to-types</h1>
+
+                <aside class="notes" data-markdown>
+...into these types
+                </aside>
+
+
+                <pre data-id="code">
+                    <code data-trim class="language-typescript" data-line-numbers>
+                        type WindsurfBoardVariant = {
+                          volumeL: number; // Board volume in liters, no decimals
+                        };
+
+                        type WindsurfBoardSchema = {
+                          type: ProductType;
+                          subType: ProductSubType;
+                          brandId: string;
+                          name: string;
+                          year: number; // Must be between 1970 and the next year
+                          version?: string; // Optional
+                          variants: WindsurfBoardVariant[]; // At least one variant required
+                        };
+                    </code>
+                </pre>
+            </section>
+            <section data-auto-animate>
+                <h1>schema-to-types</h1>
+
+                <aside class="notes" data-markdown>
+- should be simple enough, right?
+
+- well, it's not too complicated but devil is in the details
+
+- details that I will spare you 😅
+                </aside>
+
+                <ul>
+                    <li class="fragment">Typescript Abstract Syntax Tree
+                        <aside class="notes" data-markdown>
+- basically, the **representation of Typescript code** like
+  - class definitions
+  - inheritance
+  - functions
+  - imports
+  - etc
+                        </aside>
+                    </li>
+                    <li class="fragment">ts-morph
+                        <aside class="notes" data-markdown>
+- a library to manipulate the AST
+
+- I learn all this
+- starting to see the rabit hole?
+                        </aside>
+                    </li>
+                </ul>
+
+                <pre class="fragment">
+                    <aside class="notes" data-markdown>
+- it ends up looking like this
+                    </aside>
+                    <code data-trim class="language-typescript" data-line-numbers>
+                        // can't show you code, it's too messy!
+                    </code>
+                </pre>
+
+            </section>
+            <section data-auto-animate>
+                <h1>schema-to-types</h1>
+                <div class="fragment">npm package: <a href="https://www.npmjs.com/package/schema-to-types" target="_top">schema-to-types</a></div>
+                <div class="fragment todo">weekly downloads
+                <aside class="notes" data-markdown>
+this is not an huge success
+
+## ➡️ SWITCH TO TIMELINE
+
+- so when I need something similar for the OneKey project,
+  - I learn from my mistakes
+  - and decide to go for something more standard!
+                </aside>
+                </div>
+            </section>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- JSON schemas -->
-        <section id="JSON schemas">
-            <h1>JSON Schemas</h1>
-            <ul>
-                <li class="fragment">Describe JSON structure
-                    <aside class="notes" data-markdown>
-- Use a schema to define required fields and types.
-                    </aside>
-                </li>
-                <li class="fragment">Validate data
-                    <aside class="notes" data-markdown>
-- Automatic validation against the schema.
-                    </aside>
-                </li>
-                <li class="fragment">Documentation and tools
-                    <aside class="notes" data-markdown>
+        <section>
+            <section id="JSON schemas" data-auto-animate>
+                <h1>JSON Schemas</h1>
+                <ul>
+                    <li class="fragment">Schema: in JSON
+                        <aside class="notes" data-markdown>
+- The schema itself is defined in a special type of JSON
+                        </aside>
+                    </li>
+                    <li class="fragment">More standard
+                        <aside class="notes" data-markdown>
+- can be used in any language (not just Typescript)
+                        </aside>
+                    </li>
+                    <li class="fragment">Much more supported
+                        <aside class="notes" data-markdown>
 - Many libraries generate docs and code from schemas.
-                    </aside>
-                </li>
-            </ul>
+  - for example Typescript types
+                        </aside>
+                    </li>
+                </ul>
+            </section>
+            <section data-auto-animate>
+                <h1>JSON Schemas</h1>
+                <aside class="notes" data-markdown>
+- it would basically look like this
+                </aside>
+                <pre>
+                    <code data-trim class="language-json" data-line-numbers="2|3-4|5|6|7|8|9-13|21-25">
+                        {
+                          "$schema": "http://json-schema.org/draft-07/schema#",
+                          "type": "object",
+                          "properties": {
+                            "type": {"type": "string"},
+                            "subType": {"type": "string"},
+                            "brandId": {"type": "string"},
+                            "name": {"type": "string"},
+                            "year": {
+                              "type": "integer",
+                              "minimum": 1970,
+                              "maximum": { "$data": "1#/currentYear" }
+                            },
+                            "version": {"type": "string"},
+                            "variants": {
+                              "type": "array",
+                              "minItems": 1,
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "volumeL": {
+                                    "type": "integer",
+                                    "minimum": 10,
+                                    "maximum": 500
+                                  }
+                                },
+                                "required": ["volumeL"]
+                              }
+                            }
+                          },
+                        }
+                    </code>
+                </pre>
+            </section>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- consulting -->
         <section id="consulting">
-            <h1>consulting</h1>
+            <h1>👔 consulting</h1>
+            <aside class="notes" data-markdown>
+- Searching for help, I decide to invest some money to get things done efficiently
+            </aside>
+            <div class="todo fragment">forum screenshot
+                <aside class="notes" data-markdown>
 
+## ➡️ SWITCH TO TIMELINE
+
+- spend a couple of hours to present the project
+- I write specs
+- I spend a couple of hours discussing with the consultants
+- I send 600$
+- They spend 2/3 of the budget to create a pdf
+- They push 2 commits where they inject jquery
+  - put hardcoded labels and add plenty of divs
+  - They mess up the git history.
+- I spend a few more hours re-explaining what is expected
+- A couple of hours fixing the bugs they created
+- I finally ask to stop the project and ask some refund - I will never get it
+- A few more hours complaining…
+- Then I simply give up and move on to something else
+
+                </aside>
+            </div>
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- waterspot-catalog -->
-        <section id="waterspot-catalog">
+        <section id="waterspot-catalog" data-visibility="hidden">
             <h1>waterspot-catalog</h1>
 
         </section>
@@ -1422,7 +1630,7 @@ Meteor.call("createWindsurfBoard",  {"type": "board", "subType": "windsurfBoard"
         </section>
 
         <!-- SECTION ------------------------------------------------------------------------------- 🏡 buy a house -->
-        <section id="🏡 buy a house">
+        <section id="🏡 buy a house" data-visibility="hidden">
             <h1>🏡 buy a house</h1>
 
         </section>
