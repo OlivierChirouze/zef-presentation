@@ -42,7 +42,7 @@
 }
 
 img {
-	margin: 0;
+	margin: 0 !important;
 }
 
 #intro {
@@ -55,4 +55,9 @@ img {
 
 .inline {
 	display: inline;
+	clear: right;
+}
+
+.people {
+	border-radius: 50%;
 }
