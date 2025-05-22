@@ -324,6 +324,7 @@ EUREKA
             </section>
             <section data-auto-animate>
                 <h1>💡the result</h1>
+                <img src="images/petole-screenshots/icon.png" alt="petole"/>
                 <aside class="notes" data-markdown>
 - and I'm going to show you the result of how it looks almost 10 years later
 - then we'll go through the journey
@@ -616,19 +617,8 @@ EUREKA
   - so it is backward compatible
                         </aside>
                         <ul>
-                            <li class="fragment">compatible with javascript</li>
+                            <li class="fragment">backward <strong>compatible</strong> with javascript</li>
                         </ul>
-                    </li>
-                    <li class="fragment">Improves code quality and tooling
-                        <aside class="notes" data-markdown>
-- Types help **catch errors** early
-- enable editor **autocompletion**
-                        </aside>
-                    </li>
-                    <li class="fragment">Compiles to plain JavaScript
-                        <aside class="notes" data-markdown>
-- The TypeScript compiler emits standard JS for any browser.
-                        </aside>
                     </li>
                 </ul>
             </section>
@@ -759,11 +749,11 @@ EUREKA
                 <pre class="fragment">
                 <code data-trim class="language-typescript" data-line-numbers="1-3|5|6|7-8|9-10|11-12|15|16-21|22-26|28-31">
                     const query = this.auth.loggedRider$.pipe(
-                      switchMap(loggedRider => (loggedRider ? this.queries.getBooking : this.queries.getBooking_public).call$(this.bookingId))
+                      switchMap(loggedRider => (loggedRider ? this.queries.getSession : this.queries.getSession_public).call$(this.sessionId))
                     );
 
                     query.pipe(
-                      tap(entity => this.entity = getBookingEntity(entity)),
+                      tap(entity => this.entity = getSessionEntity(entity)),
                       switchMap(entity => this.spotDays.getEntityById$(entity.spotDayId).pipe(
                         tap(spotDay => this.spotDay = spotDay),
                         switchMap(spotDay => this.spots.getEntityById$(spotDay.spotId)),
@@ -778,12 +768,12 @@ EUREKA
                                 map(actor => ({
                                   ...entity,
                                   actor
-                                }) as BookingWithBooker))
+                                }) as SessionWithBooker))
                             : of({
                               ...entity,
                               actor: FakePipe.getFakeRider(),
                               abstract: this.fake.getFakeAbstract()
-                            }) as BookingWithBooker))
+                            }) as SessionWithBooker))
                       ),
                       tap(entity => this.entityWithActor = entity),
                       tap(() => this.onLoaded?.emit()),
@@ -818,7 +808,7 @@ EUREKA
             <section>
                 <img src="images/ionic/mobile-desktop.webp" alt="mobile versus desktop share of traffic"/>
                 <aside class="notes" data-markdown>
-- But the world has changed! most people use a smartphone nowadays
+- But the world has changed! we are 2017 most people use a smartphone nowadays
 - I look at tools to help me build a _responsive_ web site and a mobile app
                 </aside>
             </section>
@@ -830,10 +820,12 @@ EUREKA
 I look at **Ionic**
             </aside>
             <ul>
-                <li class="fragment">Hybrid mobile app framework
+                <li class="fragment">Hybrid mobile app framework (iOs, Android)
                     <aside class="notes" data-markdown>
 - Ionic lets you build mobile apps with web technologies.
                     </aside>
+                </li>
+                <li class="fragment">Written in <img src="images/logos/typescript.png" class="logo img-text" alt="typescript"/> TypeScript
                 </li>
                 <li class="fragment">Reusable and platform-specific <a href="https://ionicframework.com/docs/api/radio#object-value-references" target="_top">UI components</a>
                     <aside class="notes" data-markdown>
@@ -1065,10 +1057,10 @@ with type checking
                 <pre class="fragment">
                     <code data-trim class="language-typescript" data-line-numbers="5|1-4|2|3">
                         function selectBySpotId(spotDayId: Id): { [p: string]: string } {
-                            const local_spotDayId: keyof Booking = 'spotDayId';
+                            const local_spotDayId: keyof Session = 'spotDayId';
                             return { [local_spotDayId]: spotDayId };
                         }
-                        return Bookings.find(selectBySpotId(spotDayId));
+                        return Sessions.find(selectBySpotId(spotDayId));
                     </code>
                 </pre>
             </section>
@@ -1079,6 +1071,8 @@ with type checking
             <section id="MeteorJS" data-switch-to-timeline data-auto-animate>
                 <aside class="notes" data-markdown>
 - Now that I know MongoDb and chose my Javascript frontend framework, I look at a backend javascript framework
+
+## ➡️ GO BACK TO SLIDES
                 </aside>
                 <h1><img src="images/logos/meteor-js.svg" alt="meteor"/></h1>
                 <ul>
@@ -2030,16 +2024,16 @@ because why not?
                         <ul>
                             <li class="fragment">2 programming languages
                                 <ul>
-                                    <li class="fragment"><img src="images/logos/scala.png" class="logo img-text" alt="scala"/></li>
-                                    <li class="fragment"><img src="images/logos/typescript.png" class="logo img-text" alt="typescript"/> TypeScript</li>
+                                    <li><img src="images/logos/scala.png" class="logo img-text" alt="scala"/></li>
+                                    <li><img src="images/logos/typescript.png" class="logo img-text" alt="typescript"/> TypeScript</li>
                                 </ul>
                             </li>
                             <li class="fragment">4 frameworks
                                 <ul>
-                                    <li class="fragment"><img src="images/logos/play-framework.png" class="logo img-text" alt="play"/></li>
-                                    <li class="fragment"><img src="images/logos/angular-js.png" class="logo img-text" alt="angular"/> Angular</li>
-                                    <li class="fragment"><img src="images/logos/meteor-js.svg" alt="meteor" class="logo img-text"/></li>
-                                    <li class="fragment"><img src="images/logos/ionic-text.png" class="logo img-text" alt="ionic"/></li>
+                                    <li><img src="images/logos/play-framework.png" class="logo img-text" alt="play"/></li>
+                                    <li><img src="images/logos/angular-js.png" class="logo img-text" alt="angular"/> Angular</li>
+                                    <li><img src="images/logos/meteor-js.svg" alt="meteor" class="logo img-text"/></li>
+                                    <li><img src="images/logos/ionic-text.png" class="logo img-text" alt="ionic"/></li>
                                 </ul>
                             </li>
                         </ul>
