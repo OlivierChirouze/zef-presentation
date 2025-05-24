@@ -1,0 +1,2 @@
+- [ ] README: explain how the presentation works
+- [ ] download heatmap of the project

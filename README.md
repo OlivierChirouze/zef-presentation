@@ -26,8 +26,8 @@ The talk is a slides presentation that can be navigated through via a "timeline"
 
 - for this presentation:
   - [ ] 🖥️ shell: start serving the presentation `npm run start`
-  - [ ] 🌐 Browser: (of course) open the presentation (http://localhost:8100)
-  - [ ] Mobile: open the presentation as well, directly from github for simplicity [Github pages](https://olivierchirouze.github.io/zef-presentation/)
+  - [ ] 🌐 Browser: (of course) open the presentation (http://localhost:8000/)
+  - [ ] Mobile Chrome: open the presentation as well, directly from github for simplicity [Github pages](https://olivierchirouze.github.io/zef-presentation/)
 - [ ] 🧑‍💻 WebStorm: enter presentation mode and/or increase editor font size globally
 - for zef project
   - [ ] 🧑‍💻 WebStorm: debug backend (`npm run backend:run`)
